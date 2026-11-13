@@ -6,7 +6,7 @@ import { linkWhatsApp, site } from "@/lib/site";
 import { casaAtual } from "@/content/casas";
 
 const NAV = [
-  { href: "#a-casa", rotulo: "A casa" },
+  { href: "#o-projeto", rotulo: "O projeto" },
   { href: "#casas-entregues", rotulo: "Casas entregues" },
   { href: "#a-idear", rotulo: "A Idear" },
 ];
@@ -15,6 +15,7 @@ export default function Header() {
   const [aberto, setAberto] = useState(false);
   const [rolado, setRolado] = useState(false);
   const [oculto, setOculto] = useState(false);
+  const [sobreHero, setSobreHero] = useState(true);
   const ultimoY = useRef(0);
 
   // Some ao rolar para baixo, volta ao rolar para cima
@@ -22,6 +23,8 @@ export default function Header() {
     const onScroll = () => {
       const y = window.scrollY;
       setRolado(y > 24);
+      // transparente e claro enquanto está sobre a foto do hero
+      setSobreHero(y < window.innerHeight - 120);
       const delta = y - ultimoY.current;
       if (Math.abs(delta) > 6) {
         setOculto(delta > 0 && y > 320);
@@ -43,30 +46,38 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [aberto]);
 
+  const claro = sobreHero && !aberto;
+
   return (
     <>
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-ivory/95 backdrop-blur-sm transition-[transform,border-color] duration-700 ease-idear ${
-        rolado ? "border-b border-line" : "border-b border-transparent"
-      } ${oculto && !aberto ? "-translate-y-full" : "translate-y-0"}`}
+      className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,border-color,color] duration-700 ease-idear ${
+        claro ? "border-b border-transparent bg-transparent text-ivory" : "bg-ivory/95 text-navy backdrop-blur-sm"
+      } ${!claro && rolado ? "border-b border-line" : "border-b border-transparent"} ${
+        oculto && !aberto ? "-translate-y-full" : "translate-y-0"
+      }`}
     >
       <div className="container-idear flex h-[72px] items-center justify-between md:h-20">
         <a href="#inicio" aria-label="Idear Empreendimentos, início" className="relative z-10">
-          <LogoHorizontal />
+          <LogoHorizontal variante={claro ? "clara" : "cor"} />
         </a>
         {casaAtual.provisorio ? (
-          <span className="ml-6 mr-auto hidden border border-line px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-stone sm:inline-block">
+          <span
+            className={`ml-6 mr-auto hidden border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] sm:inline-block ${
+              claro ? "border-ivory/30 text-ivory/75" : "border-line text-stone"
+            }`}
+          >
             Prévia · dados provisórios
           </span>
         ) : null}
 
         <nav aria-label="Principal" className="hidden items-center gap-10 lg:flex">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="link-line text-[15px] font-semibold text-navy">
+            <a key={item.href} href={item.href} className="link-line text-[15px] font-semibold">
               {item.rotulo}
             </a>
           ))}
-          <a href="#agendar" className="btn-primary min-h-[46px] px-6">
+          <a href="#agendar" className={`${claro ? "btn-claro" : "btn-primary"} min-h-[46px] px-6`}>
             Agendar visita
           </a>
         </nav>
@@ -81,12 +92,12 @@ export default function Header() {
           {aberto ? "Fechar" : "Menu"}
           <span aria-hidden className="relative block h-3 w-6">
             <span
-              className={`absolute left-0 block h-px w-6 bg-navy transition-transform duration-500 ease-idear ${
+              className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-500 ease-idear ${
                 aberto ? "top-1.5 rotate-45" : "top-0"
               }`}
             />
             <span
-              className={`absolute left-0 block h-px w-6 bg-navy transition-transform duration-500 ease-idear ${
+              className={`absolute left-0 block h-px w-6 bg-current transition-transform duration-500 ease-idear ${
                 aberto ? "top-1.5 -rotate-45" : "top-3"
               }`}
             />

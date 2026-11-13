@@ -1,23 +1,5 @@
-import Simbolo from "./Simbolo";
-
-const ETAPAS = [
-  {
-    titulo: "Terreno",
-    texto: "Escolhemos o terreno pela rua, pela orientação solar e pela vizinhança.",
-  },
-  {
-    titulo: "Projeto",
-    texto: "Desenvolvemos o projeto com arquiteto e engenheiros, com memorial descritivo de cada material.",
-  },
-  {
-    titulo: "Obra",
-    texto: "Conduzimos a obra sob responsabilidade técnica, com acompanhamento em todas as etapas.",
-  },
-  {
-    titulo: "Entrega",
-    texto: "Entregamos a casa pronta para morar, com habite-se e manual do proprietário.",
-  },
-];
+import Image from "next/image";
+import { empresa } from "@/content/empresa";
 
 const GARANTIAS = [
   { titulo: "Solidez", texto: "Garantia de solidez e segurança da construção por 5 anos, conforme o Código Civil." },
@@ -27,36 +9,66 @@ const GARANTIAS = [
 ];
 
 export default function Processo() {
+  const etapas = empresa.processo;
   return (
-    <section id="a-idear" aria-labelledby="processo-titulo" className="relative bg-ivory" data-draw-trigger>
-      <div className="container-idear grid-12 pt-24 lg:pt-0">
-        {/* Lado fixo: símbolo que se desenha com a rolagem e o título */}
-        <div className="col-span-4 md:col-span-12 lg:col-span-5">
-          <div className="flex flex-col justify-center gap-10 lg:sticky lg:top-0 lg:h-[100svh]">
-            <Simbolo draw className="h-40 w-auto self-start text-bronze md:h-64 lg:h-72" strokeWidth={1.5} />
-            <h2 id="processo-titulo" data-split className="h2 max-w-[14ch]">
-              Projeto, obra e entrega sob uma única responsabilidade.
-            </h2>
+    <section id="processo" aria-labelledby="processo-titulo" className="relative bg-sand">
+      <div className="container-idear pt-24 lg:pt-40">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <h2 id="processo-titulo" data-split className="h2 max-w-[16ch]">
+            Do terreno à entrega das chaves.
+          </h2>
+          <p className="max-w-[36ch] text-stone md:text-right">
+            Projeto, obra e entrega sob uma única responsabilidade. Quatro etapas, uma equipe só.
+          </p>
+        </div>
+      </div>
+
+      <div className="container-idear grid-12 pb-10" data-steps>
+        {/* Foto fixa que troca conforme a etapa ativa (desktop) */}
+        <div className="hidden lg:col-span-6 lg:block">
+          <div className="sticky top-0 flex h-[100svh] items-center">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy">
+              {etapas.map((e, i) => (
+                <div key={e.titulo} data-step-img={i} className={`absolute inset-0 ${i === 0 ? "is-active" : ""}`}>
+                  <Image src={e.imagem} alt="" fill sizes="45vw" className="object-cover" />
+                </div>
+              ))}
+              <span className="legenda-ilustrativa">Imagem ilustrativa</span>
+            </div>
           </div>
         </div>
 
-        {/* Etapas que acendem ao passar pelo centro da tela */}
-        <ol className="relative col-span-4 mt-14 md:col-span-12 lg:col-span-6 lg:col-start-7 lg:mt-0 lg:py-[22svh]">
-          <span className="absolute bottom-0 left-0 top-0 w-px bg-line lg:bottom-[22svh] lg:top-[22svh]" aria-hidden>
+        <ol className="relative col-span-4 mt-14 md:col-span-12 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:py-[20svh]">
+          <span className="absolute bottom-0 left-0 top-0 w-px bg-navy/15 lg:bottom-[20svh] lg:top-[20svh]" aria-hidden>
             <span data-progress-y className="absolute inset-0 origin-top bg-navy" />
           </span>
-          {ETAPAS.map((e, i) => (
-            <li key={e.titulo} data-step className="flex min-h-[38svh] flex-col justify-center py-10 pl-8 md:pl-12 lg:min-h-[56svh]">
-              <span className="text-[14px] tabular-nums text-bronze-dark">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="display mt-4 text-[48px] md:text-[72px]">{e.titulo}</h3>
+          {etapas.map((e, i) => (
+            <li
+              key={e.titulo}
+              data-step
+              data-step-index={i}
+              className="flex min-h-[40svh] flex-col justify-center py-10 pl-8 md:pl-12 lg:min-h-[60svh]"
+            >
+              <p className="flex items-center gap-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-bronze-dark">
+                <span>Etapa {String(i + 1).padStart(2, "0")}</span>
+                <span className="h-px w-8 bg-bronze-dark/50" aria-hidden />
+                <span className="normal-case tracking-normal text-stone">{e.prazo}</span>
+              </p>
+              <h3 className="display mt-4 text-[52px] md:text-[80px]">{e.titulo}</h3>
               <p className="mt-5 max-w-[40ch] text-stone">{e.texto}</p>
+              {/* No celular, cada etapa mostra a própria foto */}
+              <div className="relative mt-8 aspect-[16/10] overflow-hidden lg:hidden" data-reveal-image>
+                <div className="absolute inset-0" data-reveal-zoom>
+                  <Image src={e.imagem} alt="" fill sizes="100vw" className="object-cover" />
+                </div>
+              </div>
             </li>
           ))}
         </ol>
       </div>
 
       {/* Garantias */}
-      <div className="container-idear pb-24 pt-10 lg:pb-40">
+      <div className="container-idear pb-24 lg:pb-40">
         <p className="font-serif text-[28px] md:text-[34px]">O que acompanha cada casa.</p>
         <ul className="mt-10 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
           {GARANTIAS.map((g) => (

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { casaAtual as casa } from "@/content/casas";
 import { linkWhatsApp, site } from "@/lib/site";
@@ -41,16 +42,26 @@ export default function Agendar() {
   }
 
   return (
-    <section id="agendar" aria-labelledby="agendar-titulo" className="section">
-      <div className="container-idear">
-        <h2 id="agendar-titulo" data-split className="display max-w-[12ch] text-[52px] md:text-[88px] lg:text-[120px]">
+    <section
+      id="agendar"
+      aria-labelledby="agendar-titulo"
+      className="relative overflow-hidden bg-navy-deep py-24 text-ivory lg:py-40"
+    >
+      {/* Foto da área gourmet ao fundo */}
+      <div className="absolute inset-x-0 -top-[10%] h-[120%]" data-img-parallax aria-hidden>
+        <Image src="/images/casa/gourmet-mesa.webp" alt="" fill sizes="100vw" className="object-cover opacity-45" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-navy-deep/60 to-navy-deep" aria-hidden />
+
+      <div className="container-idear relative">
+        <h2 id="agendar-titulo" data-split className="display max-w-[12ch] text-[52px] text-ivory md:text-[88px] lg:text-[120px]">
           Conheça a casa pessoalmente.
         </h2>
-        <p className="mt-8 max-w-[44ch] text-stone lg:ml-[41.66%]">
+        <p className="mt-8 max-w-[44ch] text-ivory/80 lg:ml-[41.66%]">
           Agende uma visita com a equipe da Idear. Retornamos para confirmar o dia e o horário.
         </p>
 
-        <div className="mt-16 lg:mt-24">
+        <div className="mt-16 bg-ivory p-6 text-navy md:p-12 lg:mt-24">
           {estado === "enviado" ? (
             <div role="status" className="relative py-10">
               <span data-line className="absolute inset-x-0 top-0 h-px bg-navy" aria-hidden />
@@ -129,8 +140,8 @@ export default function Agendar() {
         </div>
 
         {/* Outras formas de contato, em uma linha */}
-        <div className="relative mt-16 flex flex-col gap-4 pt-8 text-[15px] md:flex-row md:items-center md:justify-between">
-          <span data-line className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden />
+        <div className="relative mt-12 flex flex-col gap-4 pt-8 text-[15px] md:flex-row md:items-center md:justify-between">
+          <span data-line className="absolute inset-x-0 top-0 h-px bg-ivory/25" aria-hidden />
           <a
             href={linkWhatsApp()}
             target="_blank"
@@ -140,13 +151,13 @@ export default function Agendar() {
           >
             <WhatsAppIcon /> Prefere conversar? Fale pelo WhatsApp
           </a>
-          <p className="text-stone">
+          <p className="text-ivory/70">
             {site.horarioVisitas} ·{" "}
-            <a href={`tel:+${site.whatsapp}`} className="link-line text-navy">
+            <a href={`tel:+${site.whatsapp}`} className="link-line text-ivory">
               {site.telefoneExibicao}
             </a>{" "}
             ·{" "}
-            <a href={`mailto:${site.email}`} className="link-line text-navy">
+            <a href={`mailto:${site.email}`} className="link-line text-ivory">
               {site.email}
             </a>
           </p>

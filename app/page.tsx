@@ -4,7 +4,9 @@ import Motion from "@/components/Motion";
 import Intro from "@/components/Intro";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Apresentacao from "@/components/Apresentacao";
+import FaixaDestaques from "@/components/FaixaDestaques";
+import Projeto from "@/components/Projeto";
+import Idear from "@/components/Idear";
 import FichaTecnica from "@/components/FichaTecnica";
 import Galeria from "@/components/Galeria";
 import Planta from "@/components/Planta";
@@ -52,7 +54,7 @@ export default function Home() {
       <Motion />
       <Intro />
       <a
-        href="#a-casa"
+        href="#o-projeto"
         className="sr-only z-[70] bg-navy px-4 py-3 text-ivory focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
       >
         Pular para o conteúdo
@@ -60,12 +62,14 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Apresentacao />
+        <FaixaDestaques />
+        <Projeto />
         <FichaTecnica />
         <Galeria />
         <Planta />
         <Acabamentos />
         <Localizacao />
+        <Idear />
         <Processo />
         <CasasEntregues />
         <Agendar />

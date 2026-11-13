@@ -355,6 +355,13 @@ export default function Motion() {
           start: "top 62%",
           end: "bottom 38%",
           toggleClass: { targets: el, className: "is-active" },
+          // troca a foto fixa da etapa ([data-step-img]) no mesmo bloco [data-steps]
+          onToggle: (self) => {
+            if (!self.isActive) return;
+            el.closest("[data-steps]")
+              ?.querySelectorAll<HTMLElement>("[data-step-img]")
+              .forEach((img) => img.classList.toggle("is-active", img.dataset.stepImg === el.dataset.stepIndex));
+          },
         });
       });
       gsap.utils.toArray<HTMLElement>("[data-progress-y]").forEach((el) => {

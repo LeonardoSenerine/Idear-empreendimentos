@@ -63,10 +63,10 @@ export default function Intro() {
       id="intro"
       ref={ref}
       aria-hidden
-      className="fixed inset-0 z-[90] items-center justify-center bg-ivory"
+      className="fixed inset-0 z-[90] items-center justify-center bg-navy-deep"
     >
       <div data-intro-marca>
-        <svg viewBox="0 0 416 570" fill="none" stroke="#756B48" strokeWidth={10} className="h-24 w-auto md:h-28">
+        <svg viewBox="0 0 416 570" fill="none" stroke="#C4B992" strokeWidth={10} className="h-24 w-auto md:h-28">
           {SIMBOLO_PATHS.map((d) => (
             <path key={d} d={d} />
           ))}

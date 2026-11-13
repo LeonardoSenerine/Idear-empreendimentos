@@ -39,8 +39,8 @@ export default function Rodape() {
           <p className="eyebrow text-bronze-light">Navegação</p>
           <ul className="mt-6 space-y-3 text-[15px]">
             <li>
-              <a href="#a-casa" className="link-line">
-                A casa
+              <a href="#o-projeto" className="link-line">
+                O projeto
               </a>
             </li>
             <li>

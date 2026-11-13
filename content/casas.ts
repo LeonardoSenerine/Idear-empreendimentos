@@ -61,6 +61,10 @@ export type CasaAtual = {
   galeria: (Imagem & { src: string; legenda: string; largura: number; altura: number; faixa?: boolean })[];
   /** Ambientes cujas imagens ainda não chegaram (aparecem como uma linha de texto ao fim da galeria) */
   imagensPendentes: string[];
+  /** Os pontos altos do projeto (seção "O projeto") */
+  destaques: { titulo: string; texto: string; numero: string; imagem: string; alt: string }[];
+  /** Frases curtas da faixa em movimento abaixo do hero */
+  faixa: string[];
   pavimentos: Pavimento[];
   acabamentos: Acabamento[];
   localizacao: { descricao: string; pontos: PontoProximo[] };
@@ -88,7 +92,7 @@ export const casaAtual: CasaAtual = {
   titulo: "Luz natural, espaço e acabamento de alto padrão.",
   resumo: { area: 320, suites: 4, vagas: 4 },
   apresentacao: [
-    "Uma casa por vez. Na Idear, cada imóvel é acompanhado do terreno à entrega das chaves.",
+    "Uma casa pensada para receber: a sala sobe dois pavimentos, a cozinha se abre para o jantar e a área gourmet olha para a piscina.",
     "Estar com pé-direito duplo, cozinha e jantar integrados, área gourmet com churrasqueira voltada para a piscina e quatro suítes no pavimento superior.",
   ],
   ficha: [
@@ -163,6 +167,45 @@ export const casaAtual: CasaAtual = {
       alt: "Banheiro com bancada cinza, revestimento em losangos no box e espelho com luz embutida" },
   ],
   imagensPendentes: [],
+  destaques: [
+    {
+      titulo: "Pé-direito duplo",
+      numero: "6 m",
+      texto: "A sala sobe dois pavimentos, com janelas altas e luz natural o dia inteiro.",
+      imagem: `${BASE}/estar-pe-direito.webp`,
+      alt: "Sala de estar com pé-direito duplo e janelas altas",
+    },
+    {
+      titulo: "Área gourmet",
+      numero: "48 m²",
+      texto: "Churrasqueira, ilha e mesa para dez pessoas sob o pergolado, de frente para a piscina.",
+      imagem: `${BASE}/gourmet-mesa.webp`,
+      alt: "Área gourmet com mesa de madeira sob pergolado",
+    },
+    {
+      titulo: "Suíte principal",
+      numero: "42 m²",
+      texto: "Closet com portas em vidro canelado e banho com duas cubas e revestimento em granilite.",
+      imagem: `${BASE}/suite-principal.webp`,
+      alt: "Suíte principal com parede ripada e cabeceira estofada",
+    },
+    {
+      titulo: "Piscina e jardim",
+      numero: "8 × 4 m",
+      texto: "Deck de madeira, borda em granilite e jardim vertical no muro dos fundos.",
+      imagem: `${BASE}/piscina.webp`,
+      alt: "Piscina com deck de madeira e jardim",
+    },
+  ],
+  faixa: [
+    "Pé-direito duplo",
+    "Área gourmet com churrasqueira",
+    "Piscina com deck",
+    "Quatro suítes",
+    "Closet na suíte principal",
+    "Cozinha integrada",
+    "Quatro vagas",
+  ],
   pavimentos: [
     {
       id: "terreo",
