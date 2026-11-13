@@ -59,7 +59,7 @@ export default function Home() {
         <Agendar
           id="contato"
           titulo="Vamos conversar sobre a sua próxima casa."
-          texto={`Agende uma visita à Casa ${casa.nome} ou peça para ser avisado quando a próxima casa da Idear for lançada.`}
+          texto="Agende uma visita à casa à venda ou peça para ser avisado quando a próxima casa da Idear for lançada."
           assunto="Contato pelo site"
         />
       </main>

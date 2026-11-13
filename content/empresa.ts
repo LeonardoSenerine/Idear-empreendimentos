@@ -9,7 +9,6 @@ const BASE = "/images/casa";
 
 export type Entrega = {
   slug: string;
-  nome: string;
   bairro: string;
   cidade: string;
   ano: string;
@@ -100,8 +99,7 @@ export const empresa = {
   /** Casas entregues (exemplos para a prévia; trocar pelas casas reais com fotos reais) */
   entregas: [
     {
-      slug: "casa-jacaranda",
-      nome: "Casa Jacarandá",
+      slug: "casa-2024",
       bairro: "[Bairro]",
       cidade: "Itatiba",
       ano: "2024",
@@ -114,8 +112,7 @@ export const empresa = {
       alt: "Área externa com piscina e deck de madeira",
     },
     {
-      slug: "casa-ipe",
-      nome: "Casa Ipê",
+      slug: "casa-2022",
       bairro: "[Bairro]",
       cidade: "Itatiba",
       ano: "2022",
@@ -128,8 +125,7 @@ export const empresa = {
       alt: "Sala com pé-direito duplo e janelas altas",
     },
     {
-      slug: "casa-aroeira",
-      nome: "Casa Aroeira",
+      slug: "casa-2019",
       bairro: "[Bairro]",
       cidade: "Itatiba",
       ano: "2019",

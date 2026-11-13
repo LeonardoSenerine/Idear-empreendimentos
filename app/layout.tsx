@@ -20,8 +20,8 @@ const sans = Manrope({
   display: "swap",
 });
 
-const titulo = `${site.nome} | Casas de alto padrão em ${empresa.cidade}`;
-const descricao = `${empresa.hero.texto} Conheça a Casa ${casaAtual.nome}, à venda em ${casaAtual.bairro}.`;
+const titulo = `${site.nome} | Casas de alto padrão em ${empresa.cidade}/SP`;
+const descricao = `Casa à venda em ${empresa.cidade}: ${casaAtual.resumo.area} m², ${casaAtual.resumoCurto}. Conheça a Idear e agende sua visita.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

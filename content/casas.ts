@@ -2,7 +2,7 @@
  * Conteúdo das casas da Idear.
  *
  * Com uma casa à venda por vez, o conteúdo fica no próprio projeto (sem CMS).
- * Quando a casa atual for vendida: mova-a para `casasEntregues` e preencha
+ * Quando a casa atual for vendida: mova-a para `entregas` em content/empresa.ts e preencha
  * `casaAtual` com a próxima.
  *
  * PRÉVIA: tudo entre colchetes e os valores marcados com `provisorio` são
@@ -39,7 +39,10 @@ export type PontoProximo = { categoria: string; nome: string; tempo: string };
 
 export type CasaAtual = {
   slug: string;
-  nome: string;
+  /** Título da casa nas páginas (as casas não têm nome próprio) */
+  manchete: string;
+  /** Resumo curto do que a casa tem, usado em cartões e na capa do link */
+  resumoCurto: string;
   bairro: string;
   cidade: string;
   uf: string;
@@ -70,21 +73,13 @@ export type CasaAtual = {
   localizacao: { descricao: string; pontos: PontoProximo[] };
 };
 
-export type CasaEntregue = {
-  slug: string;
-  nome: string;
-  bairro: string;
-  cidade: string;
-  ano: string;
-  area: string;
-  imagem: Imagem;
-};
 
 const BASE = "/images/casa";
 
 export const casaAtual: CasaAtual = {
   slug: "casa-atual",
-  nome: "[Nome]",
+  manchete: "Casa à venda em Itatiba",
+  resumoCurto: "4 suítes, piscina e área gourmet",
   bairro: "[Bairro]",
   cidade: "Itatiba",
   uf: "SP",
@@ -277,24 +272,3 @@ export const casaAtual: CasaAtual = {
     ],
   },
 };
-
-export const casasEntregues: CasaEntregue[] = [
-  {
-    slug: "casa-entregue-1",
-    nome: "Casa [Nome]",
-    bairro: "[Bairro]",
-    cidade: "Itatiba",
-    ano: "[Ano]",
-    area: "[000] m²",
-    imagem: { src: null, alt: "Casa entregue", ilustrativa: false },
-  },
-  {
-    slug: "casa-entregue-2",
-    nome: "Casa [Nome]",
-    bairro: "[Bairro]",
-    cidade: "Itatiba",
-    ano: "[Ano]",
-    area: "[000] m²",
-    imagem: { src: null, alt: "Casa entregue", ilustrativa: false },
-  },
-];

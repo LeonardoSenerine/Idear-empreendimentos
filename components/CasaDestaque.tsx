@@ -35,8 +35,8 @@ export default function CasaDestaque() {
             </span>
             À venda agora
           </p>
-          <h2 id="a-venda-titulo" data-split className="display mt-5 text-[56px] text-ivory md:text-[88px] lg:text-[104px]">
-            Casa {casa.nome}
+          <h2 id="a-venda-titulo" data-split className="display mt-5 max-w-[12ch] text-[48px] text-ivory md:text-[72px] lg:text-[80px]">
+            {casa.resumoCurto}.
           </h2>
           <p className="mt-3 text-[15px] text-ivory/70">
             {casa.bairro}, {casa.cidade}

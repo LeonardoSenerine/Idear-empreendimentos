@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CapaLink from "@/components/CapaLink";
 import { empresa } from "@/content/empresa";
-import { casaAtual } from "@/content/casas";
 
 /*
  * Capa de compartilhamento da home. Só existe em desenvolvimento:
@@ -15,14 +14,23 @@ export const metadata: Metadata = {
 
 export default function OgCover() {
   if (process.env.NODE_ENV === "production") notFound();
+  const n = (trecho: string) => empresa.numeros.find((x) => x.rotulo.includes(trecho));
+  const anos = n("anos construindo");
+  const casas = n("casas entregues");
   return (
     <CapaLink
       foto="/images/casa/fachada-perspectiva.webp"
-      posicaoFoto="55% 42%"
-      chamada="Itatiba/SP"
-      titulo={empresa.hero.titulo}
-      tamanhoTitulo={92}
-      selo={`À venda: Casa ${casaAtual.nome}`}
+      posicaoFoto="58% 42%"
+      chamada={`Incorporadora em ${empresa.cidade}/SP`}
+      titulo="Casas de alto padrão, do terreno às chaves."
+      tamanhoTitulo={66}
+      subtitulo="Uma casa por vez, com projeto, obra e entrega sob a mesma responsabilidade."
+      itens={[
+        anos ? `${anos.valor} anos` : "",
+        casas ? `${casas.valor} casas entregues` : "",
+        "Obras no prazo",
+      ].filter(Boolean)}
+      acao="Casa à venda: agende sua visita"
     />
   );
 }

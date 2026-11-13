@@ -4,7 +4,6 @@ import Link from "next/link";
 import Simbolo from "@/components/Simbolo";
 import { LogoHorizontal } from "@/components/Logo";
 import { linkWhatsApp } from "@/lib/site";
-import { casaAtual } from "@/content/casas";
 
 export const metadata: Metadata = {
   title: "Página não encontrada | Idear Empreendimentos",
@@ -37,7 +36,7 @@ export default function NaoEncontrada() {
             Voltar para o início
           </Link>
           <Link href="/casa-a-venda" className="btn-outline-claro">
-            Ver a Casa {casaAtual.nome}
+            Ver a casa à venda
           </Link>
         </div>
         <a href={linkWhatsApp("Olá, vim pelo site da Idear.")} target="_blank" rel="noopener" className="link-line mt-8 self-start text-[15px] text-ivory/80">

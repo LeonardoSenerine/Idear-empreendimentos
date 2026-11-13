@@ -40,7 +40,7 @@ export default function HeroEmpresa() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-bronze-light" />
           </span>
           <span>
-            <span className="font-semibold">À venda:</span> Casa {casa.nome}
+            <span className="font-semibold">Casa à venda:</span> {casa.resumoCurto}
           </span>
         </span>
         <Seta />
@@ -100,7 +100,7 @@ export default function HeroEmpresa() {
                 </span>
                 À venda agora
               </p>
-              <p className="mt-3 font-serif text-[32px] leading-tight">Casa {casa.nome}</p>
+              <p className="mt-3 font-serif text-[30px] leading-tight">{casa.resumoCurto}</p>
               <p className="mt-1 text-[14px] text-ivory/70">
                 {casa.bairro}, {casa.resumo.area} m², {casa.resumo.suites} suítes
               </p>

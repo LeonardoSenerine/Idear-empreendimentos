@@ -45,7 +45,7 @@ export default function Agendar({
       const r = await fetch("/api/contato", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...dados, casa: assunto ?? `Casa ${casa.nome}` }),
+        body: JSON.stringify({ ...dados, casa: assunto ?? "Casa à venda" }),
       });
       if (!r.ok) throw new Error(String(r.status));
       setEstado("enviado");

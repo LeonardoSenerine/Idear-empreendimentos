@@ -29,6 +29,6 @@ export const site = {
 export function linkWhatsApp(mensagem?: string) {
   const texto =
     mensagem ??
-    `Olá, gostaria de agendar uma visita à Casa ${casaAtual.nome}, em ${casaAtual.bairro}, ${casaAtual.cidade}.`;
+    `Olá, gostaria de agendar uma visita à casa à venda da Idear em ${casaAtual.cidade}.`;
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(texto)}`;
 }

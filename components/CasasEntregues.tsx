@@ -100,7 +100,7 @@ export default function CasasEntregues() {
                         i === ativa ? "text-navy" : "text-navy/35 group-hover:text-navy/60"
                       }`}
                     >
-                      {c.nome}
+                      Casa de {c.area} m²
                     </span>
                     <span className={`text-[15px] tabular-nums ${i === ativa ? "text-bronze-dark" : "text-stone"}`}>{c.ano}</span>
                   </span>
@@ -114,7 +114,7 @@ export default function CasasEntregues() {
               <Link href="/casa-a-venda" className="group relative block w-full py-7">
                 <span className="absolute inset-x-0 top-0 h-px bg-navy/15" aria-hidden />
                 <span className="flex items-baseline justify-between gap-6">
-                  <span className="font-serif text-[40px] leading-none text-bronze-dark">Casa {casaAtual.nome}</span>
+                  <span className="font-serif text-[40px] leading-none text-bronze-dark">Casa de {casaAtual.resumo.area} m²</span>
                   <span className="text-[15px] text-bronze-dark">À venda</span>
                 </span>
                 <span className="mt-2 flex items-center gap-2 text-[14px] font-semibold">
@@ -175,7 +175,7 @@ export default function CasasEntregues() {
                   </div>
                   <div className="absolute inset-x-0 bottom-0 p-5 text-ivory">
                     <p className="font-serif text-[18px] italic text-bronze-light">Entregue em {c.ano}</p>
-                    <h3 className="mt-1 font-serif text-[38px] leading-tight">{c.nome}</h3>
+                    <h3 className="mt-1 font-serif text-[38px] leading-tight">Casa de {c.area} m²</h3>
                     <p className="text-[14px] text-ivory/75">
                       {c.bairro}, {c.cidade}
                     </p>
@@ -191,7 +191,7 @@ export default function CasasEntregues() {
           <li className="w-[84vw] shrink-0 snap-start sm:w-[60vw]">
             <Link href="/casa-a-venda" className="flex aspect-[4/5] flex-col justify-end bg-navy p-6 text-ivory">
               <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-bronze-light">A próxima</p>
-              <p className="mt-3 font-serif text-[40px] leading-tight">Casa {casaAtual.nome}</p>
+              <p className="mt-3 font-serif text-[40px] leading-tight">{casaAtual.resumoCurto}</p>
               <p className="mt-2 text-[15px] text-ivory/75">
                 À venda, {casaAtual.resumo.area} m², {casaAtual.resumo.suites} suítes
               </p>

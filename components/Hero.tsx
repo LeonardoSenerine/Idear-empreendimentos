@@ -36,7 +36,7 @@ export default function Hero() {
             </p>
             <h1 id="hero-titulo" className="mt-5">
               <span data-split="hero" className="display block text-[64px] text-ivory sm:text-[96px] lg:text-[clamp(110px,11vw,176px)]">
-                Casa {casa.nome}
+                {casa.manchete}
               </span>
               <span className="mt-4 block max-w-[30ch] font-serif text-[22px] leading-snug text-ivory/85 md:text-[28px]" data-hero-fade>
                 {casa.titulo}

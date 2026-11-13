@@ -58,7 +58,7 @@ export default function FichaTecnica() {
                     Agendar visita
                   </a>
                   <a
-                    href={linkWhatsApp(`Olá, gostaria de receber valores e condições da Casa ${casa.nome}.`)}
+                    href={linkWhatsApp("Olá, gostaria de receber valores e condições da casa à venda.")}
                     target="_blank"
                     rel="noopener"
                     className="btn-outline flex-1 md:flex-none"

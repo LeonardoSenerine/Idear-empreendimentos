@@ -18,8 +18,8 @@ import Rodape from "@/components/Rodape";
 import WhatsAppFlutuante from "@/components/WhatsAppFlutuante";
 import BarraCelular from "@/components/BarraCelular";
 
-const titulo = `Casa ${casa.nome}: casa à venda em ${casa.bairro}, ${casa.cidade} | ${site.nome}`;
-const descricao = `${casa.resumo.area} m², ${casa.resumo.suites} suítes e ${casa.resumo.vagas} vagas em ${casa.bairro}, ${casa.cidade}. Pé-direito duplo, área gourmet com churrasqueira e piscina. Agende uma visita.`;
+const titulo = `Casa à venda em ${casa.cidade}: ${casa.resumo.area} m², ${casa.resumo.suites} suítes e piscina | Idear`;
+const descricao = `Pé-direito duplo, área gourmet com churrasqueira, piscina e ${casa.resumo.suites} suítes. Agende sua visita com a Idear pelo WhatsApp.`;
 
 export const metadata: Metadata = {
   title: titulo,
@@ -39,7 +39,7 @@ function DadosEstruturados() {
   const json = {
     "@context": "https://schema.org",
     "@type": "SingleFamilyResidence",
-    name: `Casa ${casa.nome}`,
+    name: casa.manchete,
     description: casa.apresentacao.join(" "),
     url: `${site.url}/casa-a-venda`,
     image: casa.galeria.map((g) => `${site.url}${g.src}`),
