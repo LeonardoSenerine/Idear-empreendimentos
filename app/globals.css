@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  html:not(.lenis) {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ivory font-sans text-body text-navy;
+  }
+  section[id],
+  [data-anchor] {
+    scroll-margin-top: 80px;
+  }
+  ::selection {
+    background: #07324f;
+    color: #faf8f4;
+  }
+  :focus-visible {
+    outline: 1px solid #756b48;
+    outline-offset: 4px;
+  }
+}
+
+@layer components {
+  .container-idear {
+    @apply mx-auto w-full max-w-[calc(1280px+48px)] px-6 md:max-w-[calc(1280px+128px)] md:px-16;
+  }
+  .grid-12 {
+    @apply grid grid-cols-4 gap-x-6 md:grid-cols-12 md:gap-x-8;
+  }
+  .section {
+    @apply py-24 lg:py-40;
+  }
+  .eyebrow {
+    @apply font-sans text-eyebrow font-medium uppercase text-bronze;
+  }
+  .display {
+    @apply font-serif font-normal leading-[0.92] tracking-[-0.02em];
+  }
+  .h1 {
+    @apply font-serif text-[44px] font-normal leading-[1.04] tracking-[-0.01em] lg:text-[80px];
+  }
+  .h2 {
+    @apply font-serif text-[36px] font-normal leading-[1.05] tracking-[-0.01em] md:text-[56px];
+  }
+  .h3 {
+    @apply font-serif text-[26px] font-medium leading-[1.2] md:text-[30px];
+  }
+  .statement {
+    @apply font-serif text-[30px] font-normal leading-[1.18] tracking-[-0.005em] md:text-[44px] lg:text-[58px];
+  }
+
+  /* Botões: cantos retos, preenchimento que sobe no hover */
+  .btn {
+    @apply relative isolate inline-flex min-h-[52px] items-center justify-center gap-3 overflow-hidden rounded px-7 text-[15px] font-semibold tracking-[0.02em] transition-colors duration-500 ease-idear;
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .btn-primary {
+    @apply btn bg-navy text-ivory;
+  }
+  .btn-primary::before {
+    background: #052640;
+  }
+  .btn-outline {
+    @apply btn border border-navy text-navy hover:text-ivory;
+  }
+  .btn-outline::before {
+    background: #07324f;
+  }
+
+  /* Sublinhado que cresce da esquerda */
+  .link-line {
+    @apply relative inline-block;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-line:hover,
+  .link-line:focus-visible,
+  .link-line[aria-current="true"] {
+    background-size: 100% 1px;
+  }
+
+  /* Link com seta que desliza */
+  .link-seta {
+    @apply inline-flex items-center gap-3 text-[15px] font-semibold;
+  }
+  .link-seta svg {
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-seta:hover svg {
+    transform: translateX(6px);
+  }
+
+  .legenda-ilustrativa {
+    @apply pointer-events-none absolute bottom-3 right-3 z-10 bg-ivory/85 px-2 py-1 text-[11px] font-medium tracking-[0.04em] text-stone;
+  }
+
+  .field {
+    @apply block w-full rounded-none border-0 border-b border-navy/30 bg-transparent px-0 py-3.5 text-[17px] text-navy placeholder:text-stone/70 transition-colors duration-300 focus:border-navy focus:outline-none;
+  }
+
+  .sem-scrollbar {
+    scrollbar-width: none;
+  }
+  .sem-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- Movimento ---------- */
+
+/* Palavras com máscara: o texto sobe de dentro da própria linha */
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.mask > span {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Só esconde antes da animação quando o JS de movimento está ativo */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.js-motion [data-reveal-image] {
+  clip-path: inset(100% 0 0 0);
+}
+.js-motion [data-split] {
+  visibility: hidden;
+}
+.js-motion [data-line] {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.js-motion [data-hero-media] {
+  clip-path: inset(7% 7% 7% 7%);
+}
+
+/* Abertura: só na primeira visita da sessão, com movimento ligado */
+#intro {
+  display: none;
+}
+.js-motion:not(.sem-intro) #intro {
+  display: flex;
+}
+
+/* Hero sem vídeo: zoom lento para simular profundidade */
+@keyframes hero-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.2%, -1%, 0);
+  }
+}
+.hero-drift {
+  animation: hero-drift 18s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+  transform-origin: 55% 60%;
+  will-change: transform;
+}
+
+/* Entrada suave de imagens em sobreposições (lightbox, grade) */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Etapas do processo: acendem quando chegam ao centro da tela */
+[data-step] {
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js-motion [data-step]:not(.is-active) {
+  opacity: 0.28;
+}
+
+/* Pulso lento do marcador no mapa */
+@keyframes pulso {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.pulso {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulso 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-drift,
+  .pulso {
+    animation: none;
+    transform: none;
+  }
+}
