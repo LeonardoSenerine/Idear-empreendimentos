@@ -2,7 +2,17 @@ import { casaAtual } from "@/content/casas";
 
 export const site = {
   nome: "Idear Empreendimentos",
-  url: "https://idearempreendimentos.com.br",
+  // URL absoluta usada no SEO e nas imagens de compartilhamento. Sem NEXT_PUBLIC_SITE_URL,
+  // usa o domínio de produção que a Vercel injeta no build; em último caso, o endereço atual na Vercel.
+  // Enquanto idearempreendimentos.com.br apontar para o site antigo, não use esse domínio aqui:
+  // a capa do link seria procurada no site antigo e não apareceria.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://idear-one.vercel.app"),
+  cidade: "Itatiba",
+  uf: "SP",
   telefoneExibicao: "(11) 91404-1150",
   whatsapp: "5511914041150",
   email: "contato@idearempreendimentos.com.br",

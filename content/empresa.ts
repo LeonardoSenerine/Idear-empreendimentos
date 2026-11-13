@@ -24,10 +24,10 @@ export type Entrega = {
 
 export const empresa = {
   provisorio: true,
-  cidade: "[Cidade]",
+  cidade: "Itatiba",
 
   hero: {
-    chamada: "Incorporadora de casas de alto padrão",
+    chamada: "Incorporadora de casas de alto padrão em Itatiba",
     titulo: "Casas construídas para durar.",
     texto: "Uma casa por vez, do terreno à entrega das chaves. Projeto, obra e acabamento sob a mesma responsabilidade.",
   },
@@ -103,7 +103,7 @@ export const empresa = {
       slug: "casa-jacaranda",
       nome: "Casa Jacarandá",
       bairro: "[Bairro]",
-      cidade: "[Cidade]",
+      cidade: "Itatiba",
       ano: "2024",
       area: 285,
       suites: 3,
@@ -117,7 +117,7 @@ export const empresa = {
       slug: "casa-ipe",
       nome: "Casa Ipê",
       bairro: "[Bairro]",
-      cidade: "[Cidade]",
+      cidade: "Itatiba",
       ano: "2022",
       area: 340,
       suites: 4,
@@ -131,7 +131,7 @@ export const empresa = {
       slug: "casa-aroeira",
       nome: "Casa Aroeira",
       bairro: "[Bairro]",
-      cidade: "[Cidade]",
+      cidade: "Itatiba",
       ano: "2019",
       area: 260,
       suites: 3,
@@ -177,7 +177,7 @@ export const empresa = {
     {
       pergunta: "Vocês constroem em outras regiões?",
       resposta:
-        "Atuamos em [Cidade] e região. Se você procura uma casa da Idear em outro bairro, fale com a gente: avisamos quando a próxima casa for lançada.",
+        "Atuamos em Itatiba e região. Se você procura uma casa da Idear em outro bairro, fale com a gente: avisamos quando a próxima casa for lançada.",
     },
   ],
 };
