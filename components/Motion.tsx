@@ -91,7 +91,7 @@ export default function Motion() {
     let lenis: Lenis | null = null;
     const tick = (time: number) => lenis?.raf(time * 1000);
     if (window.matchMedia("(pointer: fine)").matches) {
-      lenis = new Lenis({ lerp: 0.09, anchors: { offset: -72 } });
+      lenis = new Lenis({ lerp: 0.09 });
       lenis.on("scroll", ScrollTrigger.update);
       gsap.ticker.add(tick);
       gsap.ticker.lagSmoothing(0);
@@ -133,7 +133,8 @@ export default function Motion() {
         tl.fromTo(heroFade, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.08 }, 0.7);
       };
 
-      if (window.__idearIntroDone || root.classList.contains("sem-intro")) tocarHero();
+      // sem abertura nesta página (ex.: /casa-a-venda) ou já vista: anima o hero na hora
+      if (window.__idearIntroDone || root.classList.contains("sem-intro") || !document.getElementById("intro")) tocarHero();
       else {
         const onDone = () => tocarHero();
         window.addEventListener("idear:intro-done", onDone, { once: true });
@@ -159,6 +160,69 @@ export default function Motion() {
           scrollTrigger: { trigger: el.closest("section") ?? el, start: "top bottom", end: "bottom top", scrub: true },
         });
       });
+
+      /* ---------- Hero sai de cena: conteúdo sobe e se dissolve ao rolar ---------- */
+      gsap.utils.toArray<HTMLElement>("[data-hero-sair]").forEach((el) => {
+        gsap.to(el, {
+          yPercent: -18,
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: { trigger: el.closest("section") ?? el, start: "top top", end: "bottom 15%", scrub: true },
+        });
+      });
+
+      /* ---------- Faixa com inércia: acelera com a rolagem e inverte ao subir ---------- */
+      gsap.utils.toArray<HTMLElement>(".faixa-corre").forEach((faixa) => {
+        faixa.style.animation = "none";
+        const loop = gsap.to(faixa, { xPercent: -50, duration: 46, ease: "none", repeat: -1 });
+        let direcao = 1;
+        const st = ScrollTrigger.create({
+          trigger: faixa,
+          start: "top bottom",
+          end: "bottom top",
+          onUpdate: (self) => {
+            direcao = self.direction;
+            const v = Math.min(Math.abs(self.getVelocity()) / 220, 6);
+            gsap.to(loop, { timeScale: direcao * (1 + v), duration: 0.25, overwrite: true });
+            gsap.to(loop, { timeScale: direcao, duration: 1.4, delay: 0.25, ease: "power2.out" });
+          },
+        });
+        const pausar = () => gsap.to(loop, { timeScale: 0, duration: 0.6 });
+        const voltar = () => gsap.to(loop, { timeScale: direcao, duration: 0.8 });
+        faixa.parentElement?.addEventListener("mouseenter", pausar);
+        faixa.parentElement?.addEventListener("mouseleave", voltar);
+        ctx.add(() => () => {
+          st.kill();
+          loop.kill();
+          faixa.parentElement?.removeEventListener("mouseenter", pausar);
+          faixa.parentElement?.removeEventListener("mouseleave", voltar);
+          faixa.style.animation = "";
+        });
+      });
+
+      /* ---------- Botões magnéticos (desktop) ---------- */
+      if (desktop && window.matchMedia("(pointer: fine)").matches) {
+        document.querySelectorAll<HTMLElement>(".btn").forEach((btn) => {
+          const bx = gsap.quickTo(btn, "x", { duration: 0.6, ease: "power3.out" });
+          const by = gsap.quickTo(btn, "y", { duration: 0.6, ease: "power3.out" });
+          const mover = (e: PointerEvent) => {
+            const r = btn.getBoundingClientRect();
+            bx((e.clientX - (r.left + r.width / 2)) * 0.22);
+            by((e.clientY - (r.top + r.height / 2)) * 0.3);
+          };
+          const soltar = () => {
+            bx(0);
+            by(0);
+          };
+          btn.addEventListener("pointermove", mover);
+          btn.addEventListener("pointerleave", soltar);
+          ctx.add(() => () => {
+            btn.removeEventListener("pointermove", mover);
+            btn.removeEventListener("pointerleave", soltar);
+            gsap.set(btn, { x: 0, y: 0 });
+          });
+        });
+      }
 
       /* ---------- Títulos com máscara ---------- */
       splitTitles.forEach((el) => {
@@ -377,6 +441,22 @@ export default function Motion() {
       });
     });
 
+    // Links "/#secao" na própria página: rolagem suave com o Lenis em vez do salto do navegador
+    const onClique = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="/#"], a[href^="#"]');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const href = a.getAttribute("href") ?? "";
+      const hash = href.slice(href.indexOf("#"));
+      if (href.startsWith("/#") && window.location.pathname !== "/") return;
+      const alvo = hash.length > 1 ? document.querySelector(hash) : null;
+      if (!alvo) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(alvo as HTMLElement, { offset: -72, duration: 1.6 });
+      else (alvo as HTMLElement).scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", hash);
+    };
+    document.addEventListener("click", onClique);
+
     // Recalcula depois que fontes e imagens assentarem
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);
@@ -384,6 +464,7 @@ export default function Motion() {
 
     return () => {
       window.removeEventListener("load", refresh);
+      document.removeEventListener("click", onClique);
       mm.revert();
       gsap.ticker.remove(tick);
       lenis?.destroy();

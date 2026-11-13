@@ -80,10 +80,11 @@ export default function Galeria() {
                 // altura explícita (descontada a legenda) para o aspect-ratio definir a largura
                 style={{ height: "calc(100% - 2.25rem)", aspectRatio: `${foto.largura} / ${foto.altura}` }}
                 aria-label={`Ampliar imagem: ${foto.legenda}`}
+                data-cursor="Ampliar"
                 onClick={(e) => abrir({ tipo: "foto", indice: foto.i }, e.currentTarget)}
               >
                 <span className="absolute inset-y-0 -left-[6%] -right-[6%]" data-hscroll-img>
-                  <Image
+                  <Image quality={90}
                     src={foto.src}
                     alt={foto.alt}
                     fill
@@ -132,7 +133,7 @@ export default function Galeria() {
         >
           <div className="container-idear sticky top-0 z-10 flex h-20 items-center justify-between bg-ivory/95 backdrop-blur-sm">
             <p className="text-[14px] font-semibold">
-              Todas as imagens <span className="font-normal text-stone">· {todas.length}</span>
+              Todas as imagens <span className="font-normal text-stone">({todas.length})</span>
             </p>
             <button ref={fecharRef} type="button" onClick={fechar} className="link-line text-[15px] font-semibold">
               Fechar
@@ -146,9 +147,10 @@ export default function Galeria() {
                   className="group block w-full text-left"
                   onClick={() => setModo({ tipo: "foto", indice: i })}
                   aria-label={`Ampliar imagem: ${foto.legenda}`}
+                data-cursor="Ampliar"
                 >
                   <span className="relative block aspect-[4/3] overflow-hidden bg-sand">
-                    <Image
+                    <Image quality={90}
                       src={foto.src}
                       alt={foto.alt}
                       fill
@@ -179,7 +181,7 @@ export default function Galeria() {
             <p className="text-[14px] font-semibold">
               {atual.legenda}{" "}
               <span className="font-normal text-stone">
-                · {modo.indice + 1} de {todas.length}
+                ({modo.indice + 1} de {todas.length})
               </span>
             </p>
             <button ref={fecharRef} type="button" onClick={fechar} className="link-line text-[15px] font-semibold">
@@ -191,7 +193,7 @@ export default function Galeria() {
             className="relative mx-6 mb-6 min-h-0 flex-1 animate-[aparecer_700ms_cubic-bezier(0.22,1,0.36,1)_both] md:mx-16"
             onClick={(e) => e.target === e.currentTarget && fechar()}
           >
-            <Image src={atual.src} alt={atual.alt} fill sizes="100vw" className="object-contain" />
+            <Image quality={90} src={atual.src} alt={atual.alt} fill sizes="100vw" className="object-contain" />
           </div>
           <div className="container-idear flex h-20 shrink-0 items-center justify-between border-t border-line">
             <button type="button" onClick={() => mover(-1)} className="link-line text-[15px] font-semibold">

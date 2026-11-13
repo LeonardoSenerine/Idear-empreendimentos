@@ -1,21 +1,28 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { LogoHorizontal } from "./Logo";
 import { linkWhatsApp, site } from "@/lib/site";
 import { casaAtual } from "@/content/casas";
 
 const NAV = [
-  { href: "#o-projeto", rotulo: "O projeto" },
-  { href: "#casas-entregues", rotulo: "Casas entregues" },
-  { href: "#a-idear", rotulo: "A Idear" },
+  { href: "/#a-idear", rotulo: "A Idear" },
+  { href: "/#processo", rotulo: "Como construímos" },
+  { href: "/#casas-entregues", rotulo: "Casas entregues" },
 ];
 
-export default function Header() {
+type Props = {
+  /** a página começa com uma foto escura: cabeçalho transparente e claro no topo */
+  sobreFoto?: boolean;
+  cta?: { href: string; rotulo: string };
+};
+
+export default function Header({ sobreFoto = true, cta = { href: "#contato", rotulo: "Fale conosco" } }: Props) {
   const [aberto, setAberto] = useState(false);
   const [rolado, setRolado] = useState(false);
   const [oculto, setOculto] = useState(false);
-  const [sobreHero, setSobreHero] = useState(true);
+  const [sobreHero, setSobreHero] = useState(sobreFoto);
   const ultimoY = useRef(0);
 
   // Some ao rolar para baixo, volta ao rolar para cima
@@ -24,7 +31,7 @@ export default function Header() {
       const y = window.scrollY;
       setRolado(y > 24);
       // transparente e claro enquanto está sobre a foto do hero
-      setSobreHero(y < window.innerHeight - 120);
+      setSobreHero(sobreFoto && y < window.innerHeight - 120);
       const delta = y - ultimoY.current;
       if (Math.abs(delta) > 6) {
         setOculto(delta > 0 && y > 320);
@@ -34,7 +41,7 @@ export default function Header() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [sobreFoto]);
 
   useEffect(() => {
     const lenis = window.__idearLenis;
@@ -58,27 +65,34 @@ export default function Header() {
       }`}
     >
       <div className="container-idear flex h-[72px] items-center justify-between md:h-20">
-        <a href="#inicio" aria-label="Idear Empreendimentos, início" className="relative z-10">
+        <Link href="/" aria-label="Idear Empreendimentos, página inicial" className="relative z-10">
           <LogoHorizontal variante={claro ? "clara" : "cor"} />
-        </a>
+        </Link>
         {casaAtual.provisorio ? (
           <span
-            className={`ml-6 mr-auto hidden border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] sm:inline-block ${
+            className={`ml-6 mr-auto hidden border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.16em] xl:inline-block ${
               claro ? "border-ivory/30 text-ivory/75" : "border-line text-stone"
             }`}
           >
-            Prévia · dados provisórios
+            Prévia com dados provisórios
           </span>
         ) : null}
 
-        <nav aria-label="Principal" className="hidden items-center gap-10 lg:flex">
+        <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex xl:gap-10">
           {NAV.map((item) => (
-            <a key={item.href} href={item.href} className="link-line text-[15px] font-semibold">
+            <Link key={item.href} href={item.href} className="link-line text-[15px] font-semibold">
               {item.rotulo}
-            </a>
+            </Link>
           ))}
-          <a href="#agendar" className={`${claro ? "btn-claro" : "btn-primary"} min-h-[46px] px-6`}>
-            Agendar visita
+          <Link href="/casa-a-venda" className="link-line flex items-center gap-2 text-[15px] font-semibold">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-bronze-light opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-bronze" />
+            </span>
+            À venda
+          </Link>
+          <a href={cta.href} className={`${claro ? "btn-claro" : "btn-primary"} min-h-[46px] px-6`}>
+            {cta.rotulo}
           </a>
         </nav>
 
@@ -115,18 +129,18 @@ export default function Header() {
       >
         <div className="container-idear flex h-full flex-col pb-10 pt-28">
           <nav aria-label="Principal (celular)" className="flex flex-col">
-            {NAV.map((item, i) => (
-              <a
+            {[...NAV, { href: "/casa-a-venda", rotulo: "Casa à venda" }].map((item, i) => (
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setAberto(false)}
                 style={{ transitionDelay: aberto ? `${180 + i * 70}ms` : "0ms" }}
-                className={`border-b border-line py-5 font-serif text-[40px] leading-none transition-[opacity,transform] duration-700 ease-idear ${
+                className={`border-b border-line py-5 font-serif text-[36px] leading-none transition-[opacity,transform] duration-700 ease-idear ${
                   aberto ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-                }`}
+                } ${item.href === "/casa-a-venda" ? "text-bronze-dark" : ""}`}
               >
                 {item.rotulo}
-              </a>
+              </Link>
             ))}
           </nav>
           <div
@@ -134,14 +148,16 @@ export default function Header() {
               aberto ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
             }`}
           >
-            <a href="#agendar" onClick={() => setAberto(false)} className="btn-primary w-full">
-              Agendar visita
+            <a href={cta.href} onClick={() => setAberto(false)} className="btn-primary w-full">
+              {cta.rotulo}
             </a>
             <a href={linkWhatsApp()} target="_blank" rel="noopener" className="btn-outline w-full">
               Falar com a Idear
             </a>
             <p className="mt-4 text-[14px] text-stone">
-              {site.telefoneExibicao} · {site.email}
+              {site.telefoneExibicao}
+              <br />
+              {site.email}
             </p>
           </div>
         </div>

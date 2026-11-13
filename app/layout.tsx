@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { casaAtual } from "@/content/casas";
+import { empresa } from "@/content/empresa";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -19,8 +20,8 @@ const sans = Manrope({
   display: "swap",
 });
 
-const titulo = `Casa à venda em ${casaAtual.bairro}, ${casaAtual.cidade} | ${site.nome}`;
-const descricao = `Casa ${casaAtual.nome}: ${casaAtual.resumo.area} m², ${casaAtual.resumo.suites} suítes e ${casaAtual.resumo.vagas} vagas em ${casaAtual.bairro}, ${casaAtual.cidade}. Agende uma visita com a Idear Empreendimentos.`;
+const titulo = `${site.nome} | Casas de alto padrão em ${empresa.cidade}`;
+const descricao = `${empresa.hero.texto} Conheça a Casa ${casaAtual.nome}, à venda em ${casaAtual.bairro}.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -34,14 +35,14 @@ export const metadata: Metadata = {
     siteName: site.nome,
     title: titulo,
     description: descricao,
-    images: [{ url: "/images/casa/fachada-frontal.webp", width: 1440, height: 1440, alt: casaAtual.hero.poster.alt }],
   },
+  twitter: { card: "summary_large_image" },
   // Prévia: não indexar até o conteúdo real ser aprovado
   robots: casaAtual.provisorio ? { index: false, follow: false } : undefined,
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF8F4",
+  themeColor: "#052640",
 };
 
 // Liga as animações de entrada só quando o usuário não pediu movimento reduzido

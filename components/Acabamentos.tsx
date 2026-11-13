@@ -29,7 +29,7 @@ export default function Acabamentos() {
                       i === ativo ? "scale-100 opacity-100" : "scale-[1.06] opacity-0"
                     }`}
                   >
-                    <Image src={a.imagem.src} alt={a.imagem.alt} fill sizes="40vw" className="object-cover" />
+                    <Image quality={90} src={a.imagem.src} alt={a.imagem.alt} fill sizes="40vw" className="object-cover" />
                   </div>
                 ) : null,
               )}
@@ -71,7 +71,7 @@ export default function Acabamentos() {
                 {a.imagem.src ? (
                   <div className="relative mb-8 aspect-[16/10] overflow-hidden bg-sand lg:hidden" data-reveal-image>
                     <div className="absolute inset-0" data-reveal-zoom>
-                      <Image src={a.imagem.src} alt={a.imagem.alt} fill sizes="100vw" className="object-cover" />
+                      <Image quality={90} src={a.imagem.src} alt={a.imagem.alt} fill sizes="100vw" className="object-cover" />
                     </div>
                   </div>
                 ) : null}

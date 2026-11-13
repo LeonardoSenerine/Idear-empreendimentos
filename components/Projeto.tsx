@@ -8,7 +8,6 @@ export default function Projeto() {
       <div className="container-idear pt-24 lg:pt-40">
         <div className="grid-12 gap-y-10">
           <p className="col-span-4 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-bronze-light md:col-span-12 lg:col-span-3">
-            <span className="h-px w-10 bg-bronze-light" aria-hidden />
             <span id="projeto-titulo">O projeto</span>
           </p>
           <div className="col-span-4 md:col-span-12 lg:col-span-9">
@@ -30,7 +29,7 @@ export default function Projeto() {
               <article className="group relative aspect-[4/5] overflow-hidden" data-reveal-image>
                 <div className="absolute inset-0" data-reveal-zoom>
                   <div className="absolute inset-x-0 -top-[7%] h-[114%]" data-img-parallax>
-                    <Image
+                    <Image quality={90}
                       src={d.imagem}
                       alt={d.alt}
                       fill
@@ -57,7 +56,7 @@ export default function Projeto() {
       {/* Imagem que se abre até a largura total */}
       <div data-expand className="relative mt-24 h-[70svh] overflow-hidden md:h-[85svh] lg:mt-32 lg:h-[100svh]">
         <div className="absolute inset-0" data-expand-inner>
-          <Image src={amplo.src} alt={amplo.alt} fill sizes="100vw" className="object-cover object-[50%_62%]" />
+          <Image quality={90} src={amplo.src} alt={amplo.alt} fill sizes="100vw" className="object-cover object-[50%_62%]" />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-deep/70 via-transparent to-transparent" />
         <div className="container-idear absolute inset-x-0 bottom-0 pb-10 lg:pb-16">

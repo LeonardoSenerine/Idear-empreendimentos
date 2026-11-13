@@ -12,7 +12,7 @@ export default function Processo() {
   const etapas = empresa.processo;
   return (
     <section id="processo" aria-labelledby="processo-titulo" className="relative bg-sand">
-      <div className="container-idear pt-24 lg:pt-40">
+      <div className="container-idear pt-20 lg:pt-40">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 id="processo-titulo" data-split className="h2 max-w-[16ch]">
             Do terreno à entrega das chaves.
@@ -30,7 +30,7 @@ export default function Processo() {
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-navy">
               {etapas.map((e, i) => (
                 <div key={e.titulo} data-step-img={i} className={`absolute inset-0 ${i === 0 ? "is-active" : ""}`}>
-                  <Image src={e.imagem} alt="" fill sizes="45vw" className="object-cover" />
+                  <Image quality={90} src={e.imagem} alt="" fill sizes="45vw" className="object-cover" />
                 </div>
               ))}
               <span className="legenda-ilustrativa">Imagem ilustrativa</span>
@@ -47,19 +47,18 @@ export default function Processo() {
               key={e.titulo}
               data-step
               data-step-index={i}
-              className="flex min-h-[40svh] flex-col justify-center py-10 pl-8 md:pl-12 lg:min-h-[60svh]"
+              className="flex flex-col justify-center py-8 pl-6 md:pl-12 lg:min-h-[60svh] lg:py-10"
             >
-              <p className="flex items-center gap-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-bronze-dark">
-                <span>Etapa {String(i + 1).padStart(2, "0")}</span>
-                <span className="h-px w-8 bg-bronze-dark/50" aria-hidden />
-                <span className="normal-case tracking-normal text-stone">{e.prazo}</span>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-bronze-dark">
+                Etapa {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="display mt-4 text-[52px] md:text-[80px]">{e.titulo}</h3>
+              <h3 className="display mt-3 text-[44px] md:text-[80px] lg:mt-4">{e.titulo}</h3>
+              <p className="mt-3 text-[15px] font-semibold text-bronze-dark">{e.prazo}</p>
               <p className="mt-5 max-w-[40ch] text-stone">{e.texto}</p>
               {/* No celular, cada etapa mostra a própria foto */}
-              <div className="relative mt-8 aspect-[16/10] overflow-hidden lg:hidden" data-reveal-image>
+              <div className="relative mt-6 aspect-[16/9] overflow-hidden lg:hidden" data-reveal-image>
                 <div className="absolute inset-0" data-reveal-zoom>
-                  <Image src={e.imagem} alt="" fill sizes="100vw" className="object-cover" />
+                  <Image quality={90} src={e.imagem} alt="" fill sizes="100vw" className="object-cover" />
                 </div>
               </div>
             </li>
@@ -68,7 +67,7 @@ export default function Processo() {
       </div>
 
       {/* Garantias */}
-      <div className="container-idear pb-24 lg:pb-40">
+      <div className="container-idear pb-20 lg:pb-40">
         <p className="font-serif text-[28px] md:text-[34px]">O que acompanha cada casa.</p>
         <ul className="mt-10 grid gap-x-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-group>
           {GARANTIAS.map((g) => (

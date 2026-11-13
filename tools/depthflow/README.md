@@ -32,10 +32,12 @@ uv pip install --python .venv/Scripts/python.exe depthflow imageio-ffmpeg
 
 | Arquivo | Resolução | Bitrate | Peso |
 | --- | --- | --- | --- |
-| `fachada-desktop.mp4` | 1920×1080, H.264 | 2800k | 3,4 MB |
-| `fachada-desktop.webm` | 1920×1080, VP9 | 2300k | 2,8 MB |
-| `fachada-mobile.mp4` | 900×900, H.264 | 1400k | 1,7 MB |
-| `fachada-mobile.webm` | 900×900, VP9 | 1150k | 1,4 MB |
+| `fachada-desktop.mp4` | 1920×1080, H.264 | 3100k | 3,8 MB |
+| `fachada-desktop.webm` | 1920×1080, VP9 | 2700k | 3,4 MB |
+| `fachada-mobile.mp4` | 1080×1080, H.264 | 1550k | 1,9 MB |
+| `fachada-mobile.webm` | 1080×1080, VP9 | 1350k | 1,7 MB |
+
+Fonte: a fachada frontal em 1600 px, com supersampling 2× no render. Os passos acima reproduzem estes arquivos, trocando o supersampling do render (sexto argumento) de 1.5 para 2.0.
 
 Os limites do briefing são 4 MB no desktop e 2 MB no celular. Use `-movflags +faststart` no MP4 e não inclua áudio.
 

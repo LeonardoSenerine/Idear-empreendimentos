@@ -27,12 +27,12 @@ export default function Hero() {
         <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/3 bg-gradient-to-r from-navy-deep/55 to-transparent lg:block" />
       </div>
 
-      <div className="container-idear relative flex h-full flex-col justify-end pb-8 pt-28 lg:pb-12">
+      {/* no celular, folga embaixo para a barra fixa de ações */}
+      <div className="container-idear relative flex h-full flex-col justify-end pb-28 pt-28 md:pb-8 lg:pb-12" data-hero-sair>
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-4 md:col-span-12 lg:col-span-8">
             <p className="flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-bronze-light" data-hero-fade>
-              <span className="h-px w-10 bg-bronze-light" aria-hidden />
-              Casa à venda · {casa.bairro}, {casa.cidade}
+              Casa à venda em {casa.bairro}, {casa.cidade}
             </p>
             <h1 id="hero-titulo" className="mt-5">
               <span data-split="hero" className="display block text-[64px] text-ivory sm:text-[96px] lg:text-[clamp(110px,11vw,176px)]">

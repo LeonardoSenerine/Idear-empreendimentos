@@ -39,22 +39,22 @@ export default function Rodape() {
           <p className="eyebrow text-bronze-light">Navegação</p>
           <ul className="mt-6 space-y-3 text-[15px]">
             <li>
-              <a href="#o-projeto" className="link-line">
-                O projeto
+              <a href="/casa-a-venda" className="link-line">
+                Casa à venda
               </a>
             </li>
             <li>
-              <a href="#casas-entregues" className="link-line">
+              <a href="/#casas-entregues" className="link-line">
                 Casas entregues
               </a>
             </li>
             <li>
-              <a href="#a-idear" className="link-line">
+              <a href="/#a-idear" className="link-line">
                 A Idear
               </a>
             </li>
             <li>
-              <a href="#agendar" className="link-line">
+              <a href="/#contato" className="link-line">
                 Agendar visita
               </a>
             </li>
@@ -71,7 +71,9 @@ export default function Rodape() {
           <p className="shrink-0 md:text-right">
             © {ano} {site.nome}
             <br />
-            CNPJ {site.cnpj} · {site.creci}
+            CNPJ {site.cnpj}
+            <br />
+            {site.creci}
           </p>
         </div>
       </div>

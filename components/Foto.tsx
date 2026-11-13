@@ -56,7 +56,7 @@ export default function Foto({
           className={`absolute inset-x-0 ${parallax ? "-top-[7%] h-[114%]" : "inset-y-0"}`}
           data-img-parallax={parallax ? "" : undefined}
         >
-          <Image
+          <Image quality={90}
             src={imagem.src}
             alt={imagem.alt}
             fill

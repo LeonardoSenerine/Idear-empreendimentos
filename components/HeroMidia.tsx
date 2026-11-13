@@ -28,7 +28,7 @@ export default function HeroMidia({ hero }: { hero: CasaAtual["hero"] }) {
     // começa 12% acima da moldura para o parallax nunca mostrar o fundo
     <div className="absolute inset-x-0 -top-[12%] bottom-0 overflow-hidden" data-parallax="10">
       <div className={`absolute inset-0 ${hero.video ? "" : "hero-drift"}`}>
-        <Image
+        <Image quality={90}
           src={poster.src!}
           alt={poster.alt}
           fill

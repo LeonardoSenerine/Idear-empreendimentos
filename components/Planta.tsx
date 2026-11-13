@@ -139,7 +139,7 @@ export default function Planta() {
         >
           <div className="relative bg-ivory p-6 md:p-12">
             {pav.planta ? (
-              <Image
+              <Image quality={90}
                 src={pav.planta}
                 alt={`Planta do pavimento ${pav.nome.toLowerCase()}`}
                 width={1200}
