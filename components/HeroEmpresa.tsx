@@ -1,24 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
 import { casaAtual as casa } from "@/content/casas";
 import { empresa } from "@/content/empresa";
 import HeroMidia from "./HeroMidia";
 
-function Seta({ className = "" }: { className?: string }) {
-  return (
-    <svg width="22" height="10" viewBox="0 0 22 10" fill="none" stroke="currentColor" aria-hidden className={className}>
-      <path d="M0 5h20M16 1l4 4-4 4" />
-    </svg>
-  );
-}
-
+/** Hero da home: apresenta a Idear (a casa à venda tem seção e página próprias). */
 export default function HeroEmpresa() {
+  // Números da empresa: anos, casas entregues e obras no prazo
+  const numeros = [empresa.numeros[0], empresa.numeros[1], empresa.numeros[3]].filter(Boolean);
+
   return (
     <section
       id="inicio"
       aria-labelledby="hero-titulo"
       className="relative h-[100svh] min-h-[620px] overflow-hidden bg-navy-deep text-ivory"
     >
+      {/* Vídeo de uma casa construída pela Idear */}
       <div data-hero-media className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0" data-hero-zoom>
           <HeroMidia hero={casa.hero} />
@@ -28,29 +23,12 @@ export default function HeroEmpresa() {
         <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-2/3 bg-gradient-to-r from-navy-deep/60 to-transparent lg:block" />
       </div>
 
-      {/* Celular: etiqueta compacta da casa à venda logo abaixo do cabeçalho */}
-      <Link
-        href="/casa-a-venda"
-        className="absolute inset-x-4 top-[84px] z-10 flex items-center justify-between gap-3 border border-ivory/25 bg-navy-deep/45 px-4 py-3 text-[14px] backdrop-blur-md lg:hidden"
-        data-hero-fade
-      >
-        <span className="flex items-center gap-2.5">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-bronze-light opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-bronze-light" />
-          </span>
-          <span>
-            <span className="font-semibold">Casa à venda:</span> {casa.resumoCurto}
-          </span>
-        </span>
-        <Seta />
-      </Link>
-
-      <div className="container-idear relative flex h-full flex-col justify-end pb-24 pt-32 md:pb-12" data-hero-sair>
-        <div className="grid-12 items-end gap-y-10">
+      {/* no celular, folga embaixo para a barra fixa de ações */}
+      <div className="container-idear relative flex h-full flex-col justify-end pb-28 pt-28 md:pb-12" data-hero-sair>
+        <div className="grid-12 items-end gap-y-8">
           <div className="col-span-4 md:col-span-12 lg:col-span-8">
             <p
-              className="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.2em] text-bronze-light md:text-[13px]"
+              className="text-[12px] font-semibold uppercase tracking-[0.2em] text-bronze-light md:text-[13px]"
               data-hero-fade
             >
               {empresa.hero.chamada}
@@ -58,58 +36,47 @@ export default function HeroEmpresa() {
             <h1 id="hero-titulo" className="mt-5">
               <span
                 data-split="hero"
-                className="display block max-w-[11ch] text-[52px] text-ivory sm:text-[84px] lg:text-[clamp(88px,8.6vw,140px)]"
+                className="display block max-w-[11ch] text-[48px] text-ivory sm:text-[84px] lg:text-[clamp(88px,8.6vw,140px)]"
               >
                 {empresa.hero.titulo}
               </span>
             </h1>
-            <p className="mt-6 max-w-[44ch] text-[17px] text-ivory/80 md:text-[19px]" data-hero-fade>
+            <p className="mt-5 max-w-[44ch] text-[16px] text-ivory/80 md:mt-6 md:text-[19px]" data-hero-fade>
               {empresa.hero.texto}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row" data-hero-fade>
-              <Link href="/casa-a-venda" className="btn-claro">
-                Conheça a casa à venda
-              </Link>
-              <a href="#contato" className="btn-outline-claro">
-                Fale com a Idear
+            <div className="mt-7 flex gap-3 md:mt-8" data-hero-fade>
+              <a href="#a-idear" className="btn-claro flex-1 px-3 text-[14px] sm:flex-none sm:px-7 sm:text-[15px]">
+                Conheça a Idear
+              </a>
+              <a href="#contato" className="btn-outline-claro flex-1 px-3 text-[14px] sm:flex-none sm:px-7 sm:text-[15px]">
+                Fale conosco
               </a>
             </div>
           </div>
 
-          {/* Desktop: cartão da casa à venda */}
-          <Link
-            href="/casa-a-venda"
-            data-cursor="Ver casa"
-            className="group col-span-4 hidden border border-ivory/20 bg-navy-deep/40 backdrop-blur-md transition-colors duration-500 hover:bg-navy-deep/60 lg:col-span-4 lg:col-start-9 lg:block"
+          {/* Números da empresa: em linha no celular, em painel de vidro no desktop */}
+          <dl
+            className="col-span-4 grid grid-cols-3 border-t border-ivory/25 md:col-span-12 lg:col-span-3 lg:col-start-10 lg:grid-cols-1 lg:border-t-0 lg:bg-navy-deep/35 lg:backdrop-blur-md"
+            aria-label="A Idear em números"
             data-hero-fade
           >
-            <div className="relative aspect-[16/9] overflow-hidden">
-              <Image quality={90}
-                src={casa.imagemAmpla.src}
-                alt=""
-                fill
-                sizes="30vw"
-                className="object-cover transition-transform duration-[1400ms] ease-idear group-hover:scale-[1.05]"
-              />
-            </div>
-            <div className="p-6">
-              <p className="flex items-center gap-2.5 text-[12px] font-semibold uppercase tracking-[0.18em] text-bronze-light">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-bronze-light opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-bronze-light" />
-                </span>
-                À venda agora
-              </p>
-              <p className="mt-3 font-serif text-[30px] leading-tight">{casa.resumoCurto}</p>
-              <p className="mt-1 text-[14px] text-ivory/70">
-                {casa.bairro}, {casa.resumo.area} m², {casa.resumo.suites} suítes
-              </p>
-              <p className="mt-5 flex items-center gap-3 text-[14px] font-semibold">
-                Ver a casa
-                <Seta className="transition-transform duration-500 ease-idear group-hover:translate-x-1.5" />
-              </p>
-            </div>
-          </Link>
+            {numeros.map((n, i) => (
+              <div
+                key={n.rotulo}
+                className={`flex flex-col-reverse justify-end py-4 lg:px-6 lg:py-5 ${
+                  i ? "border-l border-ivory/20 pl-3 lg:border-l-0 lg:border-t lg:pl-6" : ""
+                }`}
+              >
+                <dt className="mt-1 text-[12px] leading-snug text-ivory/70 md:text-[13px]">{n.rotulo}</dt>
+                <dd className="flex items-baseline">
+                  <span className="font-serif text-[34px] leading-none lg:text-[48px]" data-count={n.valor}>
+                    {n.valor.toLocaleString("pt-BR")}
+                  </span>
+                  {n.sufixo ? <span className="font-serif text-[20px] text-bronze-light lg:text-[26px]">{n.sufixo}</span> : null}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

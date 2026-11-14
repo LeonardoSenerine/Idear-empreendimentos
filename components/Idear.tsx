@@ -43,7 +43,7 @@ export default function Idear() {
 
         <dl className="grid grid-cols-2 gap-y-8 pt-10 lg:grid-cols-4 lg:pt-14">
           {empresa.numeros.map((n, i) => (
-            <div key={n.rotulo} className={`relative flex flex-col-reverse pt-5 ${i % 2 ? "pl-5" : "pr-5"} lg:px-8 lg:first:pl-0`}>
+            <div key={n.rotulo} className={`relative flex flex-col-reverse justify-end pt-5 ${i % 2 ? "pl-5" : "pr-5"} lg:px-8 lg:first:pl-0`}>
               <span data-line className="absolute inset-x-0 top-0 h-px bg-navy/25" aria-hidden />
               <dt className="mt-2 text-[14px] text-stone">{n.rotulo}</dt>
               <dd className="flex items-baseline font-serif leading-none text-navy">

@@ -67,7 +67,7 @@ export default function Hero() {
             {dados.map((d, i) => (
               <div
                 key={d.r}
-                className={`flex flex-col-reverse py-4 lg:px-6 lg:py-5 ${
+                className={`flex flex-col-reverse justify-end py-4 lg:px-6 lg:py-5 ${
                   i ? "border-l border-ivory/20 pl-4 lg:border-l-0 lg:border-t lg:pl-6" : ""
                 }`}
               >

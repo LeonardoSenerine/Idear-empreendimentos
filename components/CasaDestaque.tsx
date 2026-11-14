@@ -47,16 +47,16 @@ export default function CasaDestaque() {
             </span>
           </p>
 
-          <dl className="mt-8 grid grid-cols-4 border-y border-ivory/20">
+          <dl className="mt-8 grid grid-cols-2 border-y border-ivory/20 sm:grid-cols-4">
             {[
               { v: `${casa.resumo.area}`, r: "m²" },
               { v: `${casa.resumo.suites}`, r: "suítes" },
               { v: `${casa.resumo.vagas}`, r: "vagas" },
               { v: String(entrega ?? "a definir"), r: "entrega" },
             ].map((d, i) => (
-              <div key={d.r} className={`flex flex-col-reverse py-4 ${i ? "border-l border-ivory/20 pl-3 md:pl-5" : ""}`}>
+              <div key={d.r} className={`flex flex-col-reverse justify-end py-4 ${i % 2 ? "border-l border-ivory/20 pl-4" : ""} ${i > 1 ? "border-t border-ivory/20 sm:border-t-0" : ""} ${i === 2 ? "sm:border-l sm:pl-5" : ""} ${i ? "sm:pl-5" : ""}`}>
                 <dt className="mt-1 text-[12px] text-ivory/60 md:text-[13px]">{d.r}</dt>
-                <dd className="truncate font-serif text-[26px] leading-none md:text-[36px]">{d.v}</dd>
+                <dd className="font-serif text-[30px] leading-none md:text-[36px]">{d.v}</dd>
               </div>
             ))}
           </dl>

@@ -242,8 +242,11 @@
 [data-step] {
   transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.js-motion [data-step]:not(.is-active) {
-  opacity: 0.28;
+/* só no desktop, onde a foto fixa ao lado acompanha a etapa; no celular todas ficam nítidas */
+@media (min-width: 1024px) {
+  .js-motion [data-step]:not(.is-active) {
+    opacity: 0.28;
+  }
 }
 
 /* Foto fixa do processo: troca com fade e leve zoom */

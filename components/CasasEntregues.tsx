@@ -15,7 +15,7 @@ function Ficha({ c, claro = false }: { c: Entrega; claro?: boolean }) {
         { v: `${c.suites}`, u: "", r: "suítes" },
         { v: `${c.meses}`, u: "meses", r: "de obra" },
       ].map((d, i) => (
-        <div key={d.r} className={`flex flex-col-reverse py-3 ${i ? `border-l pl-3 md:pl-5 ${claro ? "border-ivory/20" : "border-navy/15"}` : ""}`}>
+        <div key={d.r} className={`flex flex-col-reverse justify-end py-3 ${i ? `border-l pl-3 md:pl-5 ${claro ? "border-ivory/20" : "border-navy/15"}` : ""}`}>
           <dt className={`text-[12px] md:text-[13px] ${sub}`}>{d.r}</dt>
           <dd className="font-serif text-[28px] leading-none md:text-[36px]">
             {d.v}
@@ -44,7 +44,7 @@ export default function CasasEntregues() {
   const [slide, setSlide] = useState(0);
   const trilhoRef = useRef<HTMLUListElement>(null);
   const atual = entregas[ativa];
-  const totalCasas = empresa.numeros.find((n) => n.rotulo.includes("casas"))?.valor;
+  const totalCasas = empresa.numeros.find((n) => n.rotulo.includes("casas entregues"))?.valor;
 
   // Celular: acompanha o cartão visível para os indicadores
   useEffect(() => {
@@ -71,7 +71,7 @@ export default function CasasEntregues() {
             </h2>
           </div>
           <p className="max-w-[40ch] text-stone lg:text-right">
-            {totalCasas ? `${totalCasas} casas entregues, ` : ""}todas no prazo. Cada uma com nome, endereço e uma família morando.
+            {totalCasas ? `${totalCasas} casas entregues, ` : ""}todas no prazo. Cada uma com endereço, data de entrega e uma família morando.
           </p>
         </div>
 

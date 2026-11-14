@@ -27,8 +27,8 @@ export const empresa = {
 
   hero: {
     chamada: "Incorporadora de casas de alto padrão em Itatiba",
-    titulo: "Casas construídas para durar.",
-    texto: "Uma casa por vez, do terreno à entrega das chaves. Projeto, obra e acabamento sob a mesma responsabilidade.",
+    titulo: "Construindo sonhos, uma casa por vez.",
+    texto: "Do terreno à entrega das chaves, cuidamos de cada detalhe da casa onde a sua família vai viver.",
   },
 
   /** Faixa em movimento abaixo do hero da home */
