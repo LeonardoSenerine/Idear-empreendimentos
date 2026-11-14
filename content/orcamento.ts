@@ -17,20 +17,24 @@ export const orcamento = {
     whatsapp: "5518997307852",
     whatsappRotulo: "(18) 99730-7852",
   },
-  total: "R$ 1.000",
+  total: "R$ 1.299",
+  /** formas de pagamento do projeto, em uma linha (topo da página e capa de link) */
+  pagamentoCurto: "em até 3x de R$ 433 ou R$ 1.169,10 no Pix",
   manutencao: "R$ 150/mês",
 
   apresentacao: [
-    "Proposta para a Idear Empreendimentos: site institucional sob medida, guia da marca e a coleção de 39 posts de lançamento por R$ 1.000, em pagamento único, mais a manutenção do site por R$ 150/mês.",
+    "Proposta para a Idear Empreendimentos: site institucional sob medida, guia da marca e a coleção de 39 posts de lançamento por R$ 1.299, em até 3x ou com 10% de desconto no Pix, mais a manutenção do site por R$ 150/mês.",
     "O objetivo é um só: quem procura casa de alto padrão em Itatiba precisa conhecer a Idear, confiar em quem constrói e agendar uma visita. Tudo nesta proposta serve a esse caminho.",
   ],
 
   diagnostico: {
     texto:
-      "A Idear constrói casas de alto padrão, mas o site e o perfil não mostravam isso: quem chegava pelo Instagram não via a casa à venda nem um jeito claro de falar com a equipe.",
+      "O site atual não converte clientes. A Idear constrói casas de alto padrão, mas quem entra no site não encontra informação para decidir: não vê a casa à venda, não sabe quem constrói nem como falar com a equipe. O visual é de um modelo pronto, datado, que não passa o padrão das casas.",
     situacao: [
-      "Site antigo montado sobre template de design de interiores, com texto de exemplo em inglês e sem dados da casa (local, metragem, preço).",
-      "Sem cores, fontes e tom de voz definidos: cada peça tem uma cara diferente.",
+      "Texto de preenchimento em latim (lorem ipsum) na home, em Quem Somos, em Projetos e em Detalhe do Projeto, além de frases de modelo como “Propomos e discutimos regras de design”.",
+      "Nenhuma informação da casa à venda: sem local, metragem, suítes, planta ou preço.",
+      "Números e textos do modelo, que não são da Idear (“3 prêmios recebidos”, “2 clientes feliz”), e e-mail com erro de digitação no rodapé (idearemprendimentos.com).",
+      "Visual de template de design de interiores, sem cores, fontes e tom de voz da marca.",
       "Sem criativos prontos para apresentar a casa à venda nas redes.",
     ],
     decisao: [
@@ -39,7 +43,8 @@ export const orcamento = {
       ["Imagem", "renders grandes e bem tratados, no celular, onde a maioria chega pelo Instagram."],
       ["Contato direto", "WhatsApp e agendamento de visita a um toque."],
     ] as [string, string][],
-    fecho: "Esses pontos guiam o escopo abaixo: tudo aponta para a visita.",
+    fecho:
+      "Para quem chega pelo Instagram, o site é a primeira prova de que a Idear é séria. Do jeito que está, ele afasta o cliente em vez de levar à visita. Por isso o site novo não é um detalhe de estética: é uma necessidade da marca.",
   },
 
   antesDepois: {
@@ -62,7 +67,7 @@ export const orcamento = {
     legenda: "Capturas da primeira tela de cada site, no computador (1440 × 900) e no celular (390 × 844), em 14/11/2026.",
     tabela: [
       ["Primeira tela", "Carrossel de fotos, sem mensagem", "Mensagem da Idear, números da empresa e dois botões de contato"],
-      ["Textos", "Texto de modelo (“Propomos e discutimos regras de design”) e trechos em inglês", "Textos da Idear, com Itatiba e os dados da casa"],
+      ["Textos", "Lorem ipsum em várias páginas, frases de modelo e trechos em inglês", "Textos da Idear, com Itatiba e os dados da casa"],
       ["Casa à venda", "Sem página e sem dados", "Página própria com galeria, ficha técnica, planta, acabamentos e localização"],
       ["Celular", "Layout de modelo, com o texto genérico logo abaixo da foto", "Pensado para o celular, com barra fixa de WhatsApp e visita"],
       ["Contato", "Telefone no topo da página", "WhatsApp fixo, formulário de visita e chamada em cada seção"],
@@ -110,20 +115,20 @@ export const orcamento = {
 
   investimento: {
     texto:
-      "O projeto sai por R$ 1.000, em pagamento único: site institucional, guia da marca e coleção de lançamento. A manutenção do site é opcional, por R$ 150/mês.",
+      "O projeto sai por R$ 1.299: site institucional, guia da marca e coleção de lançamento, em até 3x ou com 10% de desconto no Pix. A manutenção do site é opcional, por R$ 150/mês.",
     itens: [
-      ["Site institucional", "Home da Idear, página da casa à venda, 404, vídeo de abertura, SEO, capas de compartilhamento e publicação", "R$ 500"],
-      ["Guia da marca", "Paleta, tipografia, regras do logo, tom de voz, regras de imagem e página do guia", "R$ 300"],
+      ["Site institucional", "Home da Idear, página da casa à venda, 404, vídeo de abertura, SEO, capas de compartilhamento e publicação", "R$ 699"],
+      ["Guia da marca", "Paleta, tipografia, regras do logo, tom de voz, regras de imagem e página do guia", "R$ 400"],
       ["Coleção de lançamento", "12 posts, carrossel de 6 slides, 13 stories e 8 capas de destaque", "R$ 200"],
     ] as [string, string, string][],
-    totalLinha: ["Projeto completo (pagamento único)", "As três frentes acima", "R$ 1.000"] as [string, string, string],
+    totalLinha: ["Projeto completo", "As três frentes acima", "R$ 1.299"] as [string, string, string],
     mensalLinha: ["Manutenção mensal (opcional)", "Atualizações, backup, pequenos ajustes e troca da casa à venda", "R$ 150/mês"] as [string, string, string],
     observacao: "Valores pensados para fechar o projeto agora, abaixo da média de mercado para o mesmo conjunto de serviços.",
     manutencao:
       "Manutenção mensal (opcional, após a entrega): R$ 150/mês. Inclui atualizações, backup, troca de fotos, textos e valores, pequenos ajustes e a troca da casa à venda quando a próxima for lançada. Social media (criação de posts recorrentes, publicação e gestão do perfil) não faz parte deste orçamento.",
     pagamento: [
-      "Projeto: 50% na aprovação e 50% na entrega final, ou 2x sem juros por Pix ou transferência.",
-      "À vista no Pix: 5% de desconto no projeto.",
+      "Projeto: em até 3x de R$ 433, sendo a primeira na aprovação e a última na entrega final.",
+      "À vista no Pix: 10% de desconto no projeto, R$ 1.169,10.",
       "Manutenção: paga todo mês, a partir da entrega do projeto.",
     ],
   },

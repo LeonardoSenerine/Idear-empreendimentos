@@ -127,7 +127,7 @@ export default function Orcamento() {
             </div>
             <dl className="col-span-4 grid grid-cols-2 self-end border-t border-ivory/25 md:col-span-12 lg:col-span-4 lg:col-start-9 lg:grid-cols-1 lg:border-t-0 lg:bg-navy-deep/40 lg:backdrop-blur-md">
               <div className="flex flex-col-reverse justify-end py-5 pr-4 lg:px-7 lg:py-6">
-                <dt className="mt-1 text-[13px] text-ivory/70">projeto completo, pagamento único</dt>
+                <dt className="mt-1 text-[13px] text-ivory/70">projeto completo, {o.pagamentoCurto}</dt>
                 <dd className="whitespace-nowrap font-serif text-[30px] leading-none min-[400px]:text-[40px] md:text-[56px]">{o.total}</dd>
               </div>
               <div className="flex flex-col-reverse justify-end border-l border-ivory/20 py-5 pl-4 lg:border-l-0 lg:border-t lg:px-7 lg:py-6">
@@ -181,7 +181,7 @@ export default function Orcamento() {
           <div className="container-idear">
             <Rotulo>Diagnóstico</Rotulo>
             <h2 data-split className="h2 mt-4 max-w-[20ch]">
-              O que o site antigo não mostrava.
+              Por que o site atual não traz clientes.
             </h2>
             <p className="mt-6 max-w-[62ch] text-[18px] text-stone">{o.diagnostico.texto}</p>
             <div className="mt-12 grid gap-10 md:grid-cols-2 md:gap-12">

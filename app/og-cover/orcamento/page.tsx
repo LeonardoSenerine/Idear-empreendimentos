@@ -22,7 +22,7 @@ export default function OgCoverOrcamento() {
       titulo={`${o.subtitulo}.`}
       tamanhoTitulo={70}
       subtitulo={`Para ${o.para}. ${o.validade}`}
-      itens={[`Projeto ${o.total}`, `Manutenção ${o.manutencao}`]}
+      itens={[`Projeto ${o.total}`, "Até 3x", "10% de desconto no Pix"]}
       acao="Ver a proposta"
       comWhatsApp={false}
     />
