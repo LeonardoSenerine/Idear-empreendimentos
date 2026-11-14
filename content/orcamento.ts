@@ -17,13 +17,13 @@ export const orcamento = {
     whatsapp: "5518997307852",
     whatsappRotulo: "(18) 99730-7852",
   },
-  total: "R$ 1.299",
+  total: "R$ 1.199,99",
   /** formas de pagamento do projeto, em uma linha (topo da página e capa de link) */
-  pagamentoCurto: "em até 3x de R$ 433 ou R$ 1.169,10 no Pix",
+  pagamentoCurto: "em até 3x ou R$ 1.079,99 no Pix",
   manutencao: "R$ 150/mês",
 
   apresentacao: [
-    "Proposta para a Idear Empreendimentos: site institucional sob medida, guia da marca e a coleção de 39 posts de lançamento por R$ 1.299, em até 3x ou com 10% de desconto no Pix, mais a manutenção do site por R$ 150/mês.",
+    "Proposta para a Idear Empreendimentos: site institucional sob medida, guia da marca e a coleção de 39 posts de lançamento por R$ 1.199,99, em até 3x ou com 10% de desconto no Pix, mais a manutenção do site por R$ 150/mês.",
     "O objetivo é um só: quem procura casa de alto padrão em Itatiba precisa conhecer a Idear, confiar em quem constrói e agendar uma visita. Tudo nesta proposta serve a esse caminho.",
   ],
 
@@ -115,20 +115,20 @@ export const orcamento = {
 
   investimento: {
     texto:
-      "O projeto sai por R$ 1.299: site institucional, guia da marca e coleção de lançamento, em até 3x ou com 10% de desconto no Pix. A manutenção do site é opcional, por R$ 150/mês.",
+      "O projeto sai por R$ 1.199,99: site institucional, guia da marca e coleção de lançamento, em até 3x ou com 10% de desconto no Pix. A manutenção do site é opcional, por R$ 150/mês.",
     itens: [
-      ["Site institucional", "Home da Idear, página da casa à venda, 404, vídeo de abertura, SEO, capas de compartilhamento e publicação", "R$ 699"],
-      ["Guia da marca", "Paleta, tipografia, regras do logo, tom de voz, regras de imagem e página do guia", "R$ 400"],
+      ["Site institucional", "Home da Idear, página da casa à venda, 404, vídeo de abertura, SEO, capas de compartilhamento e publicação", "R$ 649,99"],
+      ["Guia da marca", "Paleta, tipografia, regras do logo, tom de voz, regras de imagem e página do guia", "R$ 350"],
       ["Coleção de lançamento", "12 posts, carrossel de 6 slides, 13 stories e 8 capas de destaque", "R$ 200"],
     ] as [string, string, string][],
-    totalLinha: ["Projeto completo", "As três frentes acima", "R$ 1.299"] as [string, string, string],
+    totalLinha: ["Projeto completo", "As três frentes acima", "R$ 1.199,99"] as [string, string, string],
     mensalLinha: ["Manutenção mensal (opcional)", "Atualizações, backup, pequenos ajustes e troca da casa à venda", "R$ 150/mês"] as [string, string, string],
     observacao: "Valores pensados para fechar o projeto agora, abaixo da média de mercado para o mesmo conjunto de serviços.",
     manutencao:
       "Manutenção mensal (opcional, após a entrega): R$ 150/mês. Inclui atualizações, backup, troca de fotos, textos e valores, pequenos ajustes e a troca da casa à venda quando a próxima for lançada. Social media (criação de posts recorrentes, publicação e gestão do perfil) não faz parte deste orçamento.",
     pagamento: [
-      "Projeto: em até 3x de R$ 433, sendo a primeira na aprovação e a última na entrega final.",
-      "À vista no Pix: 10% de desconto no projeto, R$ 1.169,10.",
+      "Projeto: em até 3x (R$ 400,00, R$ 400,00 e R$ 399,99), sendo a primeira na aprovação e a última na entrega final.",
+      "À vista no Pix: 10% de desconto no projeto, R$ 1.079,99.",
       "Manutenção: paga todo mês, a partir da entrega do projeto.",
     ],
   },
