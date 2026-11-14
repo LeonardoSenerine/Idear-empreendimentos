@@ -14,11 +14,23 @@ type Props = {
   tamanhoTitulo: number;
   subtitulo?: string;
   itens?: string[];
-  /** chamada para ação no botão em bronze (com ícone do WhatsApp) */
+  /** chamada para ação no botão em bronze */
   acao: string;
+  /** mostra o ícone do WhatsApp no botão (padrão: sim) */
+  comWhatsApp?: boolean;
 };
 
-export default function CapaLink({ foto, posicaoFoto = "50% 45%", chamada, titulo, tamanhoTitulo, subtitulo, itens, acao }: Props) {
+export default function CapaLink({
+  foto,
+  posicaoFoto = "50% 45%",
+  chamada,
+  titulo,
+  tamanhoTitulo,
+  subtitulo,
+  itens,
+  acao,
+  comWhatsApp = true,
+}: Props) {
   return (
     // Cobre o resto da página: a captura pega só este quadro de 1200x630
     <div className="fixed inset-0 z-[100] bg-navy-deep">
@@ -68,7 +80,7 @@ export default function CapaLink({ foto, posicaoFoto = "50% 45%", chamada, titul
 
         {/* Chamada para ação */}
         <div className="absolute bottom-[64px] right-[56px] flex items-center gap-3.5 bg-bronze-dark px-7 py-[18px] text-[23px] font-semibold shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)]">
-          <WhatsAppIcon className="h-7 w-7" />
+          {comWhatsApp ? <WhatsAppIcon className="h-7 w-7" /> : null}
           {acao}
         </div>
 

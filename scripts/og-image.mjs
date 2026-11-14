@@ -4,6 +4,8 @@
 // Saída (1200x630, JPEG):
 //   app/opengraph-image.jpg e app/twitter-image.jpg                  ← /og-cover (home)
 //   app/casa-a-venda/opengraph-image.jpg e twitter-image.jpg         ← /og-cover/casa
+//   app/guia-da-marca/opengraph-image.jpg e twitter-image.jpg        ← /og-cover/guia
+//   app/orcamento/opengraph-image.jpg e twitter-image.jpg            ← /og-cover/orcamento
 //
 // Abre o Microsoft Edge em modo headless via Chrome DevTools Protocol, captura o
 // quadro #og em 2x e reduz para 1200x630 com o sharp.
@@ -19,6 +21,14 @@ const CAPAS = [
   {
     url: `${BASE}/og-cover/casa`,
     saidas: ["app/casa-a-venda/opengraph-image.jpg", "app/casa-a-venda/twitter-image.jpg"],
+  },
+  {
+    url: `${BASE}/og-cover/guia`,
+    saidas: ["app/guia-da-marca/opengraph-image.jpg", "app/guia-da-marca/twitter-image.jpg"],
+  },
+  {
+    url: `${BASE}/og-cover/orcamento`,
+    saidas: ["app/orcamento/opengraph-image.jpg", "app/orcamento/twitter-image.jpg"],
   },
 ];
 const BROWSERS = [
@@ -75,8 +85,13 @@ try {
   await send("Page.enable");
 
   for (const capa of CAPAS) {
-    // Não fotografa página de erro: a arte precisa responder 200
-    const status = (await fetch(capa.url)).status;
+    // Não fotografa página de erro: a arte precisa responder 200. Enquanto o `npm run dev` compila
+    // outra rota (ex.: o ícone), ele pode responder 404 por alguns segundos; tenta de novo antes de desistir.
+    let status = 0;
+    for (let t = 0; t < 8 && status !== 200; t++) {
+      status = (await fetch(capa.url)).status;
+      if (status !== 200) await sleep(3000);
+    }
     if (status !== 200) throw new Error(`${capa.url} respondeu ${status}. Veja o terminal do npm run dev.`);
     await send("Page.navigate", { url: capa.url });
     await sleep(3000);
@@ -84,6 +99,10 @@ try {
     await send("Runtime.evaluate", {
       expression: `(async () => {
         document.querySelectorAll("nextjs-portal").forEach((el) => el.remove());
+        // o indicador pode voltar a ser montado depois de removido: esconde também por CSS
+        const s = document.createElement("style");
+        s.textContent = "nextjs-portal{display:none!important}";
+        document.head.appendChild(s);
         await document.fonts.ready;
         await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
       })()`,

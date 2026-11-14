@@ -14,7 +14,7 @@ export default function Hero() {
     <section
       id="inicio"
       aria-labelledby="hero-titulo"
-      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-navy-deep text-ivory"
+      className="relative flex min-h-[max(100svh,640px)] flex-col overflow-hidden bg-navy-deep text-ivory"
     >
       {/* Vídeo/foto em tela cheia: abre de dentro para fora e afunda devagar na rolagem */}
       <div data-hero-media className="absolute inset-0 overflow-hidden">
@@ -28,7 +28,7 @@ export default function Hero() {
       </div>
 
       {/* no celular, folga embaixo para a barra fixa de ações */}
-      <div className="container-idear relative flex h-full flex-col justify-end pb-28 pt-28 md:pb-8 lg:pb-12" data-hero-sair>
+      <div className="container-idear relative flex w-full flex-1 flex-col justify-end pb-28 pt-28 md:pb-8 lg:pb-12" data-hero-sair>
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-4 md:col-span-12 lg:col-span-8">
             <p className="flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-bronze-light" data-hero-fade>

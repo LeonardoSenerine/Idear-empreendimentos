@@ -11,7 +11,7 @@ export default function HeroEmpresa() {
     <section
       id="inicio"
       aria-labelledby="hero-titulo"
-      className="relative h-[100svh] min-h-[620px] overflow-hidden bg-navy-deep text-ivory"
+      className="relative flex min-h-[max(100svh,620px)] flex-col overflow-hidden bg-navy-deep text-ivory"
     >
       {/* Vídeo de uma casa construída pela Idear */}
       <div data-hero-media className="absolute inset-0 overflow-hidden">
@@ -24,7 +24,7 @@ export default function HeroEmpresa() {
       </div>
 
       {/* no celular, folga embaixo para a barra fixa de ações */}
-      <div className="container-idear relative flex h-full flex-col justify-end pb-28 pt-28 md:pb-12" data-hero-sair>
+      <div className="container-idear relative flex w-full flex-1 flex-col justify-end pb-28 pt-28 md:pb-12" data-hero-sair>
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-4 md:col-span-12 lg:col-span-8">
             <p
