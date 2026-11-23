@@ -18,11 +18,12 @@ export const site = {
   email: "contato@idearempreendimentos.com.br",
   instagram: "https://instagram.com/idearempreendimentos",
   instagramUsuario: "@idearempreendimentos",
-  // Confirmar com o cliente antes de publicar
-  cnpj: "[00.000.000/0001-00]",
-  creci: "[CRECI, se houver]",
-  registroIncorporacao: "[Registro de incorporação, quando houver]",
-  endereco: "[Endereço comercial]",
+  // Ocultos a pedido do cliente (23/11/2026) enquanto define os dados da empresa.
+  // Vazio = não aparece no site; basta preencher para voltar a exibir.
+  cnpj: "",
+  creci: "",
+  registroIncorporacao: "",
+  endereco: "",
   horarioVisitas: "Segunda a sábado, com hora marcada",
 };
 

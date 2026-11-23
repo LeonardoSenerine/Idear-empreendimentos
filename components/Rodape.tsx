@@ -26,7 +26,7 @@ export default function Rodape() {
                 Instagram {site.instagramUsuario}
               </a>
             </li>
-            <li className="text-ivory/75">{site.endereco}</li>
+            {site.endereco ? <li className="text-ivory/75">{site.endereco}</li> : null}
           </ul>
         </div>
 
@@ -60,15 +60,23 @@ export default function Rodape() {
       <div className="border-t border-ivory/15">
         <div className="container-idear flex flex-col gap-4 pb-28 pt-8 text-[13px] leading-relaxed text-ivory/70 md:flex-row md:justify-between md:gap-10">
           <p className="max-w-[70ch]">
-            Imagens meramente ilustrativas. Medidas, acabamentos e valores podem sofrer alterações sem aviso prévio.{" "}
-            {site.registroIncorporacao}.
+            Imagens meramente ilustrativas. Medidas, acabamentos e valores podem sofrer alterações sem aviso prévio.
+            {site.registroIncorporacao ? ` ${site.registroIncorporacao}.` : null}
           </p>
           <p className="shrink-0 md:text-right">
             © {ano} {site.nome}
-            <br />
-            CNPJ {site.cnpj}
-            <br />
-            {site.creci}
+            {site.cnpj ? (
+              <>
+                <br />
+                CNPJ {site.cnpj}
+              </>
+            ) : null}
+            {site.creci ? (
+              <>
+                <br />
+                {site.creci}
+              </>
+            ) : null}
           </p>
         </div>
       </div>
