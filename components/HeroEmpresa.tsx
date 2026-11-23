@@ -55,6 +55,7 @@ export default function HeroEmpresa() {
           </div>
 
           {/* Números da empresa: em linha no celular, em painel de vidro no desktop */}
+          {numeros.length ? (
           <dl
             className="col-span-4 grid grid-cols-3 border-t border-ivory/25 md:col-span-12 lg:col-span-3 lg:col-start-10 lg:grid-cols-1 lg:border-t-0 lg:bg-navy-deep/35 lg:backdrop-blur-md"
             aria-label="A Idear em números"
@@ -77,6 +78,7 @@ export default function HeroEmpresa() {
               </div>
             ))}
           </dl>
+          ) : null}
         </div>
       </div>
     </section>

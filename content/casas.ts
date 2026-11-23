@@ -88,7 +88,7 @@ export const casaAtual: CasaAtual = {
   bairro: "Ecologie Residencial",
   cidade: "Itatiba",
   uf: "SP",
-  provisorio: true,
+  provisorio: false,
   titulo: "Vista para a mata, espaço e acabamento de alto padrão.",
   resumo: { area: 240, suites: 3, vagas: 4 },
   apresentacao: [

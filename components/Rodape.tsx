@@ -1,5 +1,6 @@
 import { LogoEmpilhado } from "./Logo";
 import { linkWhatsApp, site } from "@/lib/site";
+import { empresa } from "@/content/empresa";
 
 export default function Rodape() {
   const ano = new Date().getFullYear();
@@ -38,11 +39,13 @@ export default function Rodape() {
                 Casa à venda
               </a>
             </li>
-            <li>
-              <a href="/#casas-entregues" className="link-line">
-                Casas entregues
-              </a>
-            </li>
+            {empresa.entregas.length ? (
+              <li>
+                <a href="/#casas-entregues" className="link-line">
+                  Casas entregues
+                </a>
+              </li>
+            ) : null}
             <li>
               <a href="/#a-idear" className="link-line">
                 A Idear

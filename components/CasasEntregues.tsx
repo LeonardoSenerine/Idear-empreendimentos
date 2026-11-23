@@ -58,6 +58,9 @@ export default function CasasEntregues() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Sem casas entregues cadastradas, a seção não aparece
+  if (!entregas.length) return null;
+
   return (
     <section id="casas-entregues" aria-labelledby="entregues-titulo" className="bg-ivory py-20 lg:py-36">
       <div className="container-idear">

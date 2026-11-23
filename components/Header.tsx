@@ -5,11 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { LogoHorizontal } from "./Logo";
 import { linkWhatsApp, site } from "@/lib/site";
 import { casaAtual } from "@/content/casas";
+import { empresa } from "@/content/empresa";
 
 const NAV = [
   { href: "/#a-idear", rotulo: "A Idear" },
   { href: "/#processo", rotulo: "Como construímos" },
-  { href: "/#casas-entregues", rotulo: "Casas entregues" },
+  ...(empresa.entregas.length ? [{ href: "/#casas-entregues", rotulo: "Casas entregues" }] : []),
 ];
 
 type Props = {

@@ -53,7 +53,7 @@ export default function Processo() {
                 Etapa {String(i + 1).padStart(2, "0")}
               </p>
               <h3 className="display mt-3 text-[44px] md:text-[80px] lg:mt-4">{e.titulo}</h3>
-              <p className="mt-3 text-[15px] font-semibold text-bronze-dark">{e.prazo}</p>
+              {e.prazo ? <p className="mt-3 text-[15px] font-semibold text-bronze-dark">{e.prazo}</p> : null}
               <p className="mt-5 max-w-[40ch] text-stone">{e.texto}</p>
               {/* No celular, cada etapa mostra a própria foto */}
               <div className="relative mt-6 aspect-[16/9] overflow-hidden lg:hidden" data-reveal-image>

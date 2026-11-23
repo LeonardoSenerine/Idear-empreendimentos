@@ -31,7 +31,7 @@ export default function Idear() {
             <div className="absolute inset-x-0 -top-[7%] h-[114%]" data-img-parallax>
               <Image quality={90}
                 src="/images/casa/fachada-perspectiva.webp"
-                alt="Fachada de casa construída pela Idear, com volumes brancos e revestimento metálico"
+                alt="Fachada da casa da Idear à venda no Ecologie Residencial, com volumes brancos e revestimento metálico"
                 fill
                 sizes="(min-width: 1328px) 1280px, 100vw"
                 className="object-cover object-[50%_40%]"
@@ -41,6 +41,7 @@ export default function Idear() {
           <span className="legenda-ilustrativa">Imagem ilustrativa</span>
         </div>
 
+        {empresa.numeros.length ? (
         <dl className="grid grid-cols-2 gap-y-8 pt-10 lg:grid-cols-4 lg:pt-14">
           {empresa.numeros.map((n, i) => (
             <div key={n.rotulo} className={`relative flex flex-col-reverse justify-end pt-5 ${i % 2 ? "pl-5" : "pr-5"} lg:px-8 lg:first:pl-0`}>
@@ -55,6 +56,7 @@ export default function Idear() {
             </div>
           ))}
         </dl>
+        ) : null}
       </div>
 
       {/* Valores em faixa azul-marinho */}

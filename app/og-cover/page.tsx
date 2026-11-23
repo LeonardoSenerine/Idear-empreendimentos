@@ -25,11 +25,11 @@ export default function OgCover() {
       titulo="Casas de alto padrão, do terreno às chaves."
       tamanhoTitulo={66}
       subtitulo="Uma casa por vez, com projeto, obra e entrega sob a mesma responsabilidade."
-      itens={[
-        anos ? `${anos.valor} anos` : "",
-        casas ? `${casas.valor} casas entregues` : "",
-        "Obras no prazo",
-      ].filter(Boolean)}
+      itens={
+        anos || casas
+          ? [anos ? `${anos.valor} anos` : "", casas ? `${casas.valor} casas entregues` : ""].filter(Boolean)
+          : ["Projeto", "Obra", "Entrega das chaves"]
+      }
       acao="Casa à venda: agende sua visita"
     />
   );

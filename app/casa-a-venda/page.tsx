@@ -81,7 +81,7 @@ export default function CasaAVenda() {
           <div className="container-idear flex flex-col gap-4 py-12 md:flex-row md:items-center md:justify-between">
             <p className="font-serif text-[26px] md:text-[32px]">Conheça também quem constrói.</p>
             <Link href="/" className="btn-outline self-start">
-              A Idear e as casas entregues
+              Conheça a Idear
             </Link>
           </div>
         </nav>
