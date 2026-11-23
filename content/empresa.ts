@@ -156,6 +156,11 @@ export const empresa = {
         "Sim. A casa aceita financiamento bancário, e nossa equipe orienta sobre a documentação. Também avaliamos propostas com imóvel na negociação.",
     },
     {
+      pergunta: "A casa é entregue mobiliada?",
+      resposta:
+        "Não. A casa é entregue com revestimentos nos banheiros, louças e metais. Os móveis, a marcenaria, os eletrodomésticos e a decoração que aparecem nas imagens são sugestões de ambientação, para mostrar o que dá para fazer em cada espaço.",
+    },
+    {
       pergunta: "Posso personalizar acabamentos?",
       resposta:
         "Quando a casa é comprada durante a obra, é possível escolher acabamentos dentro de opções pré-aprovadas, até a etapa de revestimentos. Com a casa pronta, ela é entregue como foi especificada.",

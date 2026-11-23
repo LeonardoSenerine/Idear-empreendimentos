@@ -15,6 +15,9 @@ export default function Acabamentos() {
         <h2 id="acabamentos-titulo" data-split className="h2 max-w-[18ch]">
           Materiais escolhidos para durar.
         </h2>
+        <p className="mt-6 max-w-[60ch] text-[16px] leading-relaxed text-stone">
+          {casa.entrega.inclui} {casa.entrega.naoInclui}
+        </p>
 
         <div className="grid-12 mt-14 gap-y-10 lg:mt-20">
           {/* Foto grande que acompanha o item ativo (desktop) */}
@@ -33,7 +36,7 @@ export default function Acabamentos() {
                   </div>
                 ) : null,
               )}
-              <span className="legenda-ilustrativa">Imagem ilustrativa</span>
+              <span className="legenda-ilustrativa">Imagem ilustrativa, sugestão de decoração</span>
             </div>
           </div>
 
@@ -81,7 +84,8 @@ export default function Acabamentos() {
         </div>
         {algumaIlustrativa ? (
           <p className="mt-8 text-[13px] text-stone">
-            Imagens ilustrativas. A lista completa de marcas e especificações é entregue na visita.
+            Imagens ilustrativas, com sugestão de decoração. O memorial descritivo com tudo o que acompanha a casa é
+            entregue na visita.
           </p>
         ) : null}
       </div>

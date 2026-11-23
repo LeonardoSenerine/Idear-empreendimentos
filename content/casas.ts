@@ -54,6 +54,8 @@ export type CasaAtual = {
   apresentacao: [string, string];
   ficha: DadoFicha[];
   preco: string;
+  /** O que acompanha a casa na entrega (aviso de que as imagens mostram sugestões de decoração) */
+  entrega: { inclui: string; naoInclui: string };
   hero: {
     poster: Imagem;
     /** Loop DepthFlow: 16:9 no desktop, quadrado no celular */
@@ -102,6 +104,11 @@ export const casaAtual: CasaAtual = {
     { rotulo: "Previsão de entrega", valor: "Março de 2027" },
   ],
   preco: "R$ 2.000.000",
+  // Confirmado pelo Daniel em 23/11/2026
+  entrega: {
+    inclui: "A casa é entregue com revestimentos nos banheiros, louças e metais.",
+    naoInclui: "Móveis, marcenaria, eletrodomésticos e decoração das imagens são sugestões de ambientação e não acompanham o imóvel.",
+  },
   hero: {
     poster: {
       src: `${BASE}/fachada-frontal.webp`,
@@ -260,7 +267,7 @@ export const casaAtual: CasaAtual = {
       imagem: { src: `${BASE}/acab-pergolado.webp`, alt: "Detalhe do pergolado em placas metálicas e forro ripado", ilustrativa: true, largura: 920, altura: 430 },
     },
     {
-      item: "Painéis",
+      item: "Marcenaria (sugestão)",
       material: "Painel de madeira com perfis de LED embutidos",
       imagem: { src: `${BASE}/acab-painel.webp`, alt: "Detalhe do painel de madeira da sala de jantar com faixas de luz", ilustrativa: true, largura: 420, altura: 800 },
     },

@@ -66,6 +66,9 @@ export default function Galeria() {
           <div className="relative h-px bg-line">
             <span data-hscroll-progress className="absolute inset-0 origin-left bg-navy" aria-hidden />
           </div>
+          <p className="mt-4 text-[13px] text-stone">
+            Imagens com sugestão de decoração. A casa é entregue sem móveis.
+          </p>
         </div>
 
         <ul
@@ -163,7 +166,9 @@ export default function Galeria() {
               </li>
             ))}
           </ul>
-          <p className="container-idear pb-10 text-[12px] text-stone">Imagens ilustrativas.</p>
+          <p className="container-idear pb-10 text-[12px] text-stone">
+            Imagens ilustrativas, com sugestão de decoração. {casa.entrega.inclui} {casa.entrega.naoInclui}
+          </p>
         </div>
       ) : null}
 

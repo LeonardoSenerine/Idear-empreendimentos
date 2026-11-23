@@ -49,6 +49,13 @@ export default function FichaTecnica() {
               </div>
             ))}
           </dl>
+          <div className="relative py-6 md:py-8">
+            <span data-line className="absolute inset-x-0 top-0 h-px bg-bronze/35" aria-hidden />
+            <p className="text-[15px] text-stone">Entrega</p>
+            <p className="mt-2 max-w-[52ch] text-[16px] leading-relaxed">
+              {casa.entrega.inclui} Sem móveis e decoração.
+            </p>
+          </div>
           <div className="relative py-8 md:py-10">
               <span data-line className="absolute inset-x-0 top-0 h-px bg-navy" aria-hidden />
               <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
