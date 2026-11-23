@@ -6,22 +6,17 @@ import { casaAtual as casa } from "@/content/casas";
 import { linkWhatsApp, site } from "@/lib/site";
 import WhatsAppIcon from "./WhatsAppIcon";
 
-type Estado = "ocioso" | "enviando" | "enviado" | "erro";
-
-function mascararTelefone(v: string) {
-  const d = v.replace(/\D/g, "").slice(0, 11);
-  if (d.length <= 2) return d.length ? `(${d}` : "";
-  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
-  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
-  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
-}
+/*
+ * Os pedidos de visita vão direto para o WhatsApp da Idear: o formulário só monta a mensagem.
+ * Nada é guardado no site, então não há e-mail nem banco de dados envolvido.
+ */
 
 type Props = {
   /** âncora da seção */
   id?: string;
   titulo?: string;
   texto?: string;
-  /** assunto enviado junto com o pedido */
+  /** o que a pessoa quer, completando "gostaria de ..." na mensagem do WhatsApp */
   assunto?: string;
   imagem?: string;
 };
@@ -33,28 +28,26 @@ export default function Agendar({
   assunto,
   imagem = "/images/casa/gourmet-mesa.webp",
 }: Props) {
-  const [estado, setEstado] = useState<Estado>("ocioso");
-  const [telefone, setTelefone] = useState("");
+  // link do WhatsApp com o pedido montado; fica disponível caso o navegador bloqueie a nova aba
+  const [pedido, setPedido] = useState<string | null>(null);
 
-  async function enviar(e: React.FormEvent<HTMLFormElement>) {
+  function enviar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const dados = Object.fromEntries(new FormData(form).entries());
-    setEstado("enviando");
-    try {
-      const r = await fetch("/api/contato", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...dados, casa: assunto ?? "Casa à venda" }),
-      });
-      if (!r.ok) throw new Error(String(r.status));
-      setEstado("enviado");
-      window.dispatchEvent(new CustomEvent("idear:formulario-enviado"));
-      form.reset();
-      setTelefone("");
-    } catch {
-      setEstado("erro");
-    }
+    const dados = new FormData(e.currentTarget);
+    const nome = String(dados.get("nome") ?? "").trim();
+    const quando = String(dados.get("quando") ?? "");
+    const recado = String(dados.get("recado") ?? "").trim();
+    const mensagem = [
+      `Olá, sou ${nome} e gostaria de ${assunto ?? `agendar uma visita à casa à venda da Idear em ${casa.cidade}`}.`,
+      `Melhor dia: ${quando.toLowerCase()}.`,
+      recado ? recado : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    const link = linkWhatsApp(mensagem);
+    setPedido(link);
+    window.dispatchEvent(new CustomEvent("idear:formulario-enviado"));
+    window.open(link, "_blank", "noopener");
   }
 
   return (
@@ -108,32 +101,29 @@ export default function Agendar({
               </span>
             </a>
           </div>
-          <p className="mt-6 text-[14px] text-ivory/60">
-            {site.horarioVisitas}.{" "}
-            <a href={`mailto:${site.email}`} className="link-line text-ivory/80">
-              {site.email}
-            </a>
-          </p>
+          <p className="mt-6 text-[14px] text-ivory/60">{site.horarioVisitas}.</p>
         </div>
 
-        {/* Formulário */}
+        {/* Pedido de visita: monta a mensagem e abre o WhatsApp */}
         <div className="col-span-4 bg-ivory p-6 text-navy md:col-span-12 md:p-10 lg:col-span-6 lg:col-start-7 lg:self-end lg:p-12">
-          {estado === "enviado" ? (
+          {pedido ? (
             <div role="status" className="py-8">
               <p className="font-serif text-[30px] leading-snug md:text-[38px]">
-                Obrigado. A equipe da Idear vai entrar em contato para confirmar.
+                Sua mensagem abriu no WhatsApp. É só enviar, e a equipe da Idear confirma o horário.
               </p>
-              <button
-                type="button"
-                onClick={() => setEstado("ocioso")}
-                className="link-line mt-8 text-[15px] font-semibold"
-              >
-                Enviar outro pedido
-              </button>
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <a href={pedido} target="_blank" rel="noopener" className="btn-primary">
+                  <WhatsAppIcon className="h-5 w-5" />
+                  Abrir o WhatsApp de novo
+                </a>
+                <button type="button" onClick={() => setPedido(null)} className="link-line text-[15px] font-semibold">
+                  Fazer outro pedido
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={enviar} className="grid gap-x-6 gap-y-7 sm:grid-cols-2">
-              <p className="font-serif text-[28px] leading-tight sm:col-span-2 md:text-[34px]">Ou deixe seus dados</p>
+              <p className="font-serif text-[28px] leading-tight sm:col-span-2 md:text-[34px]">Ou monte seu pedido de visita</p>
               <div>
                 <label htmlFor={`${id}-nome`} className="block text-[14px] font-semibold">
                   Nome
@@ -141,28 +131,10 @@ export default function Agendar({
                 <input id={`${id}-nome`} name="nome" required autoComplete="name" className="field" />
               </div>
               <div>
-                <label htmlFor={`${id}-telefone`} className="block text-[14px] font-semibold">
-                  Telefone
+                <label htmlFor={`${id}-quando`} className="block text-[14px] font-semibold">
+                  Melhor dia para você
                 </label>
-                <input
-                  id={`${id}-telefone`}
-                  name="telefone"
-                  type="tel"
-                  inputMode="tel"
-                  required
-                  autoComplete="tel-national"
-                  placeholder="(11) 90000-0000"
-                  minLength={14}
-                  value={telefone}
-                  onChange={(e) => setTelefone(mascararTelefone(e.target.value))}
-                  className="field"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor={`${id}-horario`} className="block text-[14px] font-semibold">
-                  Melhor horário para retorno
-                </label>
-                <select id={`${id}-horario`} name="horario" required defaultValue="" className="field">
+                <select id={`${id}-quando`} name="quando" required defaultValue="" className="field">
                   <option value="" disabled>
                     Selecione
                   </option>
@@ -171,24 +143,19 @@ export default function Agendar({
                   <option>Sábado</option>
                 </select>
               </div>
-              {/* campo isca contra spam */}
-              <input type="text" name="empresa" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-
-              <label className="flex items-start gap-3 text-[14px] leading-relaxed text-stone sm:col-span-2">
-                <input type="checkbox" name="lgpd" required className="mt-1 h-5 w-5 shrink-0 accent-navy" />
-                <span>
-                  Autorizo a Idear Empreendimentos a usar meus dados para entrar em contato, conforme a política de
-                  privacidade.
-                </span>
-              </label>
-              <button type="submit" className="btn-primary w-full sm:col-span-2" disabled={estado === "enviando"}>
-                {estado === "enviando" ? "Enviando" : "Quero ser contatado"}
+              <div className="sm:col-span-2">
+                <label htmlFor={`${id}-recado`} className="block text-[14px] font-semibold">
+                  Quer perguntar algo? <span className="font-normal text-stone">(opcional)</span>
+                </label>
+                <input id={`${id}-recado`} name="recado" className="field" placeholder="Ex.: aceita financiamento?" />
+              </div>
+              <button type="submit" className="btn-primary w-full sm:col-span-2">
+                <WhatsAppIcon className="h-5 w-5" />
+                Enviar pelo WhatsApp
               </button>
-              {estado === "erro" ? (
-                <p role="alert" className="text-[14px] text-navy sm:col-span-2">
-                  Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.
-                </p>
-              ) : null}
+              <p className="text-[13px] text-stone sm:col-span-2">
+                A mensagem abre pronta no WhatsApp da Idear, {site.telefoneExibicao}. Nenhum dado fica guardado no site.
+              </p>
             </form>
           )}
         </div>

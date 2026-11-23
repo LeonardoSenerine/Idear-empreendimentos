@@ -315,19 +315,23 @@ export default function Motion() {
       gsap.utils.toArray<HTMLElement>("[data-count]").forEach((el) => {
         const final = Number(el.dataset.count);
         if (!Number.isFinite(final)) return;
+        // valores com centavos (ex.: 399,10 m²) contam com as mesmas casas decimais
+        const casas = (el.dataset.count!.split(".")[1] ?? "").length;
+        const fmt = (v: number) =>
+          v.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas });
         const obj = { v: 0 };
-        el.textContent = "0";
+        el.textContent = fmt(0);
         gsap.to(obj, {
           v: final,
           duration: 1.6,
           ease: "power3.out",
           scrollTrigger: { trigger: el, start: "top 90%", once: true },
           onUpdate: () => {
-            el.textContent = Math.round(obj.v).toLocaleString("pt-BR");
+            el.textContent = fmt(casas ? obj.v : Math.round(obj.v));
           },
         });
         ctx.add(() => () => {
-          el.textContent = final.toLocaleString("pt-BR");
+          el.textContent = fmt(final);
         });
       });
 

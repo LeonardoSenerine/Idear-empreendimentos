@@ -22,11 +22,6 @@ export default function Rodape() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="link-line break-all">
-                {site.email}
-              </a>
-            </li>
-            <li>
               <a href={site.instagram} target="_blank" rel="noopener" className="link-line">
                 Instagram {site.instagramUsuario}
               </a>

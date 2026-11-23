@@ -27,7 +27,6 @@ function DadosEstruturados() {
     image: `${site.url}${casa.hero.poster.src}`,
     description: empresa.hero.texto,
     telephone: `+${site.whatsapp}`,
-    email: site.email,
     areaServed: empresa.cidade,
     sameAs: [site.instagram],
   };
@@ -60,7 +59,7 @@ export default function Home() {
           id="contato"
           titulo="Vamos conversar sobre a sua próxima casa."
           texto="Agende uma visita à casa à venda ou peça para ser avisado quando a próxima casa da Idear for lançada."
-          assunto="Contato pelo site"
+          assunto="conversar com a Idear sobre a casa à venda ou a próxima casa"
         />
       </main>
       <Rodape />

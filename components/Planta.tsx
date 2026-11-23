@@ -8,6 +8,15 @@ import PlantaIlustrativa from "./PlantaIlustrativa";
 
 const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
+const PAVIMENTOS: Record<number, string> = { 1: "Um", 2: "Dois", 3: "Três" };
+const SUITES: Record<number, string> = { 2: "duas", 3: "três", 4: "quatro", 5: "cinco" };
+
+/** Área em m² no formato brasileiro: 25,65 e 16,8 viram "25,65" e "16,80"; inteiros ficam sem casas */
+const m2 = (v: number) => {
+  const r = Math.round(v * 100) / 100;
+  return r.toLocaleString("pt-BR", Number.isInteger(r) ? undefined : { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+
 export default function Planta() {
   const [ativo, setAtivo] = useState(0);
   const abasRef = useRef<(HTMLButtonElement | null)[]>([]);
@@ -84,7 +93,7 @@ export default function Planta() {
       <div className="container-idear grid-12 gap-y-12">
         <div className="col-span-4 md:col-span-12 lg:col-span-4">
           <h2 id="planta-titulo" data-split className="h2">
-            Dois pavimentos, quatro suítes.
+            {`${PAVIMENTOS[casa.pavimentos.length] ?? casa.pavimentos.length} pavimentos, ${SUITES[casa.resumo.suites] ?? casa.resumo.suites} suítes.`}
           </h2>
 
           <div role="tablist" aria-label="Pavimentos" className="relative mt-10 flex gap-8 border-b border-line">
@@ -121,12 +130,12 @@ export default function Planta() {
               <li key={pav.id + a.nome} className="flex items-baseline gap-4 border-b border-line py-3.5 text-[15px]">
                 <span className="w-5 shrink-0 tabular-nums text-stone">{i + 1}</span>
                 <span className="flex-1">{a.nome}</span>
-                <span className="tabular-nums text-stone">{a.area} m²</span>
+                <span className="tabular-nums text-stone">{m2(a.area)} m²</span>
               </li>
             ))}
             <li className="flex items-baseline justify-between py-4 text-[15px] font-semibold">
-              <span>Área do pavimento</span>
-              <span className="tabular-nums">{total} m²</span>
+              <span>Soma dos ambientes</span>
+              <span className="tabular-nums">{m2(total)} m²</span>
             </li>
           </ol>
         </div>
@@ -139,13 +148,17 @@ export default function Planta() {
         >
           <div className="relative bg-ivory p-6 md:p-12">
             {pav.planta ? (
-              <Image quality={90}
-                src={pav.planta}
-                alt={`Planta do pavimento ${pav.nome.toLowerCase()}`}
-                width={1200}
-                height={1400}
-                className="h-auto w-full"
-              />
+              <a href={pav.planta} target="_blank" rel="noopener" className="block" aria-label={`Abrir a planta do pavimento ${pav.nome.toLowerCase()} em tamanho grande`}>
+                <Image
+                  quality={90}
+                  src={pav.planta}
+                  alt={`Planta do pavimento ${pav.nome.toLowerCase()}, do projeto executivo`}
+                  width={pav.plantaTamanho?.[0] ?? 1200}
+                  height={pav.plantaTamanho?.[1] ?? 1400}
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  className="mx-auto h-auto max-h-[78vh] w-auto max-w-full"
+                />
+              </a>
             ) : (
               <div ref={desenhoRef} key={pav.id} className="mx-auto max-w-[520px]">
                 <PlantaIlustrativa pavimento={pav} />
@@ -153,7 +166,7 @@ export default function Planta() {
             )}
             <p className="mt-6 text-[13px] text-stone">
               {pav.planta
-                ? "Planta sem escala. Medidas aproximadas."
+                ? "Planta do projeto executivo, sem escala. Toque para ampliar. Medidas podem ter pequenos ajustes na obra."
                 : "Planta ilustrativa, sem escala, para a prévia. Será substituída pela planta do arquiteto."}
             </p>
           </div>

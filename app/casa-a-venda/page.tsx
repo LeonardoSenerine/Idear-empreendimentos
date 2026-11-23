@@ -19,7 +19,7 @@ import WhatsAppFlutuante from "@/components/WhatsAppFlutuante";
 import BarraCelular from "@/components/BarraCelular";
 
 const titulo = `Casa à venda em ${casa.cidade}: ${casa.resumo.area} m², ${casa.resumo.suites} suítes e piscina | Idear`;
-const descricao = `Pé-direito duplo, área gourmet com churrasqueira, piscina e ${casa.resumo.suites} suítes. Agende sua visita com a Idear pelo WhatsApp.`;
+const descricao = `No ${casa.bairro}: ${casa.resumo.suites} suítes, piscina com prainha, espaço gourmet completo e vista para a mata. ${casa.preco}. Agende sua visita com a Idear pelo WhatsApp.`;
 
 export const metadata: Metadata = {
   title: titulo,
@@ -51,6 +51,8 @@ function DadosEstruturados() {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
       priceCurrency: "BRL",
+      // preço em número quando a casa tem valor divulgado ("R$ 2.000.000" vira 2000000)
+      ...(/\d/.test(casa.preco) ? { price: Number(casa.preco.replace(/\D/g, "")) } : {}),
       description: casa.preco,
       seller: { "@type": "Organization", name: site.nome, url: site.url, telephone: `+${site.whatsapp}` },
     },

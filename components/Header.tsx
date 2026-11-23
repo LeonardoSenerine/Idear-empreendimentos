@@ -155,9 +155,7 @@ export default function Header({ sobreFoto = true, cta = { href: "#contato", rot
               Falar com a Idear
             </a>
             <p className="mt-4 text-[14px] text-stone">
-              {site.telefoneExibicao}
-              <br />
-              {site.email}
+              WhatsApp {site.telefoneExibicao}
             </p>
           </div>
         </div>

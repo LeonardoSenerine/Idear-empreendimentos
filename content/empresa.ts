@@ -148,7 +148,7 @@ export const empresa = {
     {
       pergunta: "Posso visitar a casa antes de comprar?",
       resposta:
-        "Sim. As visitas são feitas com hora marcada, de segunda a sábado. Agende pelo formulário ou pelo WhatsApp e confirmamos o horário com você.",
+        "Sim. As visitas são feitas com hora marcada, de segunda a sábado. Agende pelo WhatsApp e confirmamos o horário com você.",
     },
     {
       pergunta: "A casa pode ser financiada?",

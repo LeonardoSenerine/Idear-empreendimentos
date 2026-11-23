@@ -34,8 +34,11 @@ export default function FichaTecnica() {
                 <dd className="flex items-baseline gap-2 text-right font-serif text-bronze-dark">
                   {typeof dado.valor === "number" ? (
                     <>
-                      <span className="text-[56px] leading-[0.9] tabular-nums md:text-[84px]" data-count={dado.valor}>
-                        {dado.valor.toLocaleString("pt-BR")}
+                      <span
+                        className="text-[56px] leading-[0.9] tabular-nums md:text-[84px]"
+                        data-count={Number.isInteger(dado.valor) ? dado.valor : dado.valor.toFixed(2)}
+                      >
+                        {dado.valor.toLocaleString("pt-BR", Number.isInteger(dado.valor) ? undefined : { minimumFractionDigits: 2 })}
                       </span>
                       {dado.unidade ? <span className="text-[22px] md:text-[30px]">{dado.unidade}</span> : null}
                     </>

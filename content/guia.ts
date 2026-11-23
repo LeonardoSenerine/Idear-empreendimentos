@@ -62,7 +62,7 @@ export const guia = {
 
   criativos: {
     resumo: "12 posts, um carrossel de 6 slides, 13 stories e 8 capas de destaque. Toque em uma peça para ampliar.",
-    aviso: "Os campos ainda genéricos, como nome da casa, bairro e metragens, serão preenchidos com os dados finais.",
+    aviso: "Peças atualizadas com os dados reais da casa no Ecologie Residencial: 240 m², 3 suítes, 4 vagas e R$ 2.000.000.",
     feed: [
       ["post-01-casa-a-venda", "Casa à venda"],
       ["post-02-uma-casa-por-vez", "Uma casa por vez"],

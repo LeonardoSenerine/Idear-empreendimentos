@@ -80,7 +80,7 @@ export default function Localizacao() {
             </p>
             <ol className="mt-10" data-reveal>
               {localizacao.pontos.map((p, i) => (
-                <li key={p.categoria} className="relative flex items-baseline gap-4 py-4">
+                <li key={p.nome} className="relative flex items-baseline gap-4 py-4">
                   <span data-line className="absolute inset-x-0 top-0 h-px bg-bronze/30" aria-hidden />
                   <span className="w-5 shrink-0 text-[14px] tabular-nums text-stone">{i + 1}</span>
                   <span className="flex-1">
@@ -92,7 +92,7 @@ export default function Localizacao() {
               ))}
             </ol>
             <p className="mt-4 text-[13px] text-stone" data-reveal>
-              Tempos aproximados de carro.
+              Tempo e distâncias aproximados, de carro.
             </p>
           </div>
         </div>

@@ -14,20 +14,19 @@ export const metadata: Metadata = {
 
 export default function OgCoverCasa() {
   if (process.env.NODE_ENV === "production") notFound();
-  const pavimentos = casa.ficha.find((f) => f.rotulo === "Pavimentos")?.valor;
   return (
     <CapaLink
       foto="/images/casa/fachada-frontal.webp"
       posicaoFoto="52% 40%"
-      chamada={`Casa à venda em ${casa.cidade}/${casa.uf}`}
+      chamada={`À venda: ${casa.bairro}`}
       titulo={`${casa.resumoCurto}.`}
-      tamanhoTitulo={80}
-      subtitulo="Pé-direito duplo, cozinha integrada e closet na suíte principal."
+      tamanhoTitulo={68}
+      subtitulo="Pé-direito alto, espaço gourmet completo e closet na suíte master."
       itens={[
         `${casa.resumo.area} m²`,
         `${casa.resumo.suites} suítes`,
         `${casa.resumo.vagas} vagas`,
-        pavimentos ? `${pavimentos} pavimentos` : "",
+        /\d/.test(casa.preco) ? casa.preco : "",
       ].filter(Boolean)}
       acao="Agende sua visita pelo WhatsApp"
     />

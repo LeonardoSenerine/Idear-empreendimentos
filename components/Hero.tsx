@@ -32,7 +32,7 @@ export default function Hero() {
         <div className="grid-12 items-end gap-y-8">
           <div className="col-span-4 md:col-span-12 lg:col-span-8">
             <p className="flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.2em] text-bronze-light" data-hero-fade>
-              Casa à venda em {casa.bairro}, {casa.cidade}
+              Casa à venda no {casa.bairro}, {casa.cidade}
             </p>
             <h1 id="hero-titulo" className="mt-5">
               <span data-split="hero" className="display block text-[64px] text-ivory sm:text-[96px] lg:text-[clamp(110px,11vw,176px)]">
