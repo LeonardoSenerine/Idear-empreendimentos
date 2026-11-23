@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Sora } from "next/font/google";
 import { casaAtual } from "@/content/casas";
 import { empresa } from "@/content/empresa";
 import { site } from "@/lib/site";
@@ -13,7 +13,8 @@ const serif = Cormorant_Garamond({
   display: "swap",
 });
 
-const sans = Manrope({
+// Sora: fonte institucional do guia de identidade visual de 2022
+const sans = Sora({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-sans",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#052640",
+  themeColor: "#172840",
 };
 
 // Liga as animações de entrada só quando o usuário não pediu movimento reduzido

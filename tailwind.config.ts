@@ -7,8 +7,10 @@ const config: Config = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      navy: { DEFAULT: "#07324F", deep: "#052640" },
-      bronze: { DEFAULT: "#756B48", dark: "#635A3A", light: "#C4B992" },
+      navy: { DEFAULT: "#20344E", deep: "#172840" },
+      bronze: { DEFAULT: "#716B4C", dark: "#5E5940", light: "#B7A968" },
+      // cor de apoio do guia de 2022
+      azul: "#436C9A",
       ivory: "#FAF8F4",
       white: "#FFFFFF",
       sand: "#F1EDE5",

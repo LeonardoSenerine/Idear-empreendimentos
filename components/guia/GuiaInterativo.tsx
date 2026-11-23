@@ -171,7 +171,7 @@ export function GaleriaCriativos() {
                     <svg
                       viewBox="0 0 120 120"
                       fill="none"
-                      stroke="#756B48"
+                      stroke="#716B4C"
                       strokeWidth={6}
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -208,7 +208,7 @@ export function GaleriaCriativos() {
                 className="group grid w-full gap-2 text-left"
               >
                 <span
-                  className={`relative block overflow-hidden shadow-[0_10px_28px_rgba(7,50,79,0.14)] transition-[transform,box-shadow] duration-500 ease-idear group-hover:-translate-y-1.5 group-hover:shadow-[0_18px_36px_rgba(7,50,79,0.2)] ${
+                  className={`relative block overflow-hidden shadow-[0_10px_28px_rgba(32,52,78,0.14)] transition-[transform,box-shadow] duration-500 ease-idear group-hover:-translate-y-1.5 group-hover:shadow-[0_18px_36px_rgba(32,52,78,0.2)] ${
                     vertical ? "aspect-[9/16]" : "aspect-[4/5]"
                   }`}
                 >

@@ -207,7 +207,7 @@ export default function GuiaDaMarca() {
               Tipografia
             </h2>
             <p className="mt-5 max-w-[60ch] text-[18px] text-stone">
-              Cormorant Garamond nos títulos e Manrope nos textos, as mesmas fontes dos criativos.
+              Sora, a fonte institucional do guia de identidade visual de 2022, nos textos. Cormorant Garamond nos títulos e números de destaque, para dar o tom editorial das peças.
             </p>
             <div className="mt-12 grid gap-5 md:grid-cols-2" data-reveal-group>
               <div className="border border-line bg-white p-7 md:p-8" data-reveal>
@@ -217,8 +217,8 @@ export default function GuiaDaMarca() {
               </div>
               <div className="border border-line bg-white p-7 md:p-8" data-reveal>
                 <p className="text-[120px] font-medium leading-[0.9] tracking-[-0.04em] md:text-[170px]">Aa</p>
-                <p className="mt-4 text-[20px] font-semibold">Manrope</p>
-                <p className="mt-2 text-stone">Textos, legendas, rótulos e botões. Pesos 400, 500 e 600.</p>
+                <p className="mt-4 text-[20px] font-semibold">Sora</p>
+                <p className="mt-2 text-stone">Fonte institucional da marca. Textos, legendas, rótulos e botões. Pesos 400, 500 e 600.</p>
               </div>
             </div>
             <TesteFonte />

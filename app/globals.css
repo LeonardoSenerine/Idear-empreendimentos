@@ -19,11 +19,11 @@
     scroll-margin-top: 80px;
   }
   ::selection {
-    background: #07324f;
+    background: #20344e;
     color: #faf8f4;
   }
   :focus-visible {
-    outline: 1px solid #756b48;
+    outline: 1px solid #716b4c;
     outline-offset: 4px;
   }
 }
@@ -78,13 +78,13 @@
     @apply btn bg-navy text-ivory;
   }
   .btn-primary::before {
-    background: #052640;
+    background: #172840;
   }
   .btn-outline {
     @apply btn border border-navy text-navy hover:text-ivory;
   }
   .btn-outline::before {
-    background: #07324f;
+    background: #20344e;
   }
 
   /* Versões para fundo escuro / foto */
@@ -92,7 +92,7 @@
     @apply btn bg-ivory text-navy hover:text-ivory;
   }
   .btn-claro::before {
-    background: #756b48;
+    background: #716b4c;
   }
   .btn-outline-claro {
     @apply btn border border-ivory/60 text-ivory hover:text-navy;

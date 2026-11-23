@@ -32,10 +32,12 @@ export const guia = {
   ],
 
   cores: [
-    { nome: "Azul-marinho", hex: "#07324F", uso: "Títulos, textos e botões" },
-    { nome: "Bronze", hex: "#756B48", uso: "Detalhes, linhas e ícones" },
-    { nome: "Bronze escuro", hex: "#635A3A", uso: "Bronze sobre fundo areia" },
-    { nome: "Bronze claro", hex: "#C8BE96", uso: "Detalhes sobre o azul" },
+    // Cores principais e de apoio: guia de identidade visual de 2022 (GO Office)
+    { nome: "Azul Idear", hex: "#20344E", uso: "Títulos, textos e botões. Pantone 2767 C" },
+    { nome: "Bronze Idear", hex: "#716B4C", uso: "Símbolo, linhas e ícones. Pantone 7497 C" },
+    { nome: "Azul de apoio", hex: "#436C9A", uso: "Degradês e fundos de destaque" },
+    { nome: "Dourado de apoio", hex: "#B7A968", uso: "Detalhes sobre o azul" },
+    { nome: "Bronze escuro", hex: "#5E5940", uso: "Bronze sobre fundo areia" },
     { nome: "Marfim", hex: "#FAF8F4", uso: "Fundo principal" },
     { nome: "Areia", hex: "#F1EDE5", uso: "Fundos de destaque" },
     { nome: "Pedra", hex: "#5B6570", uso: "Textos de apoio" },

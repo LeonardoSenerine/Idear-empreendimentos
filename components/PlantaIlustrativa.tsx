@@ -93,7 +93,7 @@ export default function PlantaIlustrativa({ pavimento }: { pavimento: Pavimento 
         if (!n) return null;
         return (
           <g key={i}>
-            <rect x={cx - 15} y={cy - 15} width={30} height={30} className="fill-ivory" stroke="#756B48" strokeWidth={1} />
+            <rect x={cx - 15} y={cy - 15} width={30} height={30} className="fill-ivory" stroke="#716B4C" strokeWidth={1} />
             <text x={cx} y={cy + 5} textAnchor="middle" className="fill-navy font-sans text-[14px] font-semibold">
               {n}
             </text>
@@ -107,7 +107,7 @@ export default function PlantaIlustrativa({ pavimento }: { pavimento: Pavimento 
           RUA
         </text>
       </g>
-      <g stroke="#756B48" strokeWidth={1}>
+      <g stroke="#716B4C" strokeWidth={1}>
         <line x1={0} x2={5 * M} y1={18.6 * M - 22} y2={18.6 * M - 22} />
         <line x1={0} x2={0} y1={18.6 * M - 28} y2={18.6 * M - 16} />
         <line x1={M} x2={M} y1={18.6 * M - 26} y2={18.6 * M - 18} />

@@ -66,7 +66,7 @@ export default function Intro() {
       className="fixed inset-0 z-[90] items-center justify-center bg-navy-deep"
     >
       <div data-intro-marca>
-        <svg viewBox="0 0 416 570" fill="none" stroke="#C4B992" strokeWidth={10} className="h-24 w-auto md:h-28">
+        <svg viewBox="0 0 416 570" fill="none" stroke="#B7A968" strokeWidth={10} className="h-24 w-auto md:h-28">
           {SIMBOLO_PATHS.map((d) => (
             <path key={d} d={d} />
           ))}

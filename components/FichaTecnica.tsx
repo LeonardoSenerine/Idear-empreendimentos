@@ -51,7 +51,7 @@ export default function FichaTecnica() {
           </dl>
           <div className="relative py-8 md:py-10">
               <span data-line className="absolute inset-x-0 top-0 h-px bg-navy" aria-hidden />
-              <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
                 <div>
                   <p className="text-[15px] text-stone">Valor</p>
                   <p className="mt-2 font-serif text-[44px] leading-none md:text-[60px]">{casa.preco}</p>

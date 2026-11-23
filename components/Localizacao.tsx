@@ -29,12 +29,12 @@ function MapaEstilizado() {
           <path key={d} d={d} stroke="#FFFFFF" strokeWidth="14" />
         ))}
         <path d={avenida} stroke="#FFFFFF" strokeWidth="22" />
-        <path d="M520 520 C 560 420, 640 380, 720 370" stroke="#756B48" strokeOpacity="0.35" strokeWidth="6" />
+        <path d="M520 520 C 560 420, 640 380, 720 370" stroke="#716B4C" strokeOpacity="0.35" strokeWidth="6" />
       </g>
 
       {marcadores.map((m) => (
         <g key={m.n}>
-          <circle cx={m.x} cy={m.y} r="13" fill="#FAF8F4" stroke="#756B48" />
+          <circle cx={m.x} cy={m.y} r="13" fill="#FAF8F4" stroke="#716B4C" />
           <text x={m.x} y={m.y + 4.5} textAnchor="middle" className="fill-navy font-sans text-[12px] font-semibold">
             {m.n}
           </text>
@@ -42,8 +42,8 @@ function MapaEstilizado() {
       ))}
 
       {/* casa, com pulso lento */}
-      <circle cx="350" cy="292" r="22" fill="#07324F" fillOpacity="0.18" className="pulso" />
-      <rect x="339" y="281" width="22" height="22" fill="#07324F" />
+      <circle cx="350" cy="292" r="22" fill="#20344E" fillOpacity="0.18" className="pulso" />
+      <rect x="339" y="281" width="22" height="22" fill="#20344E" />
       <text
         x="350"
         y="262"
