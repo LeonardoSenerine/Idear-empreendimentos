@@ -291,7 +291,7 @@ export const casaAtual: CasaAtual = {
     // Fonte: site do condomínio (ecologieitatiba.com.br), consultado em 23/11/2026.
     // Distância até o centro corrigida pelo cliente em 24/11/2026: 10 km, cerca de 15 minutos.
     descricao:
-      "Loteamento fechado com portaria 24 horas, câmeras de segurança e internet por fibra ótica, cercado de mata. A 10 km do centro de Itatiba, cerca de 15 minutos de carro, com acesso pela Rodovia dos Bandeirantes (saída do km 59).",
+      "Loteamento fechado com portaria 24 horas, câmeras de segurança e internet por fibra ótica, cercado de mata. A 10 km do centro de Itatiba, cerca de 15 minutos de carro, com acesso pelas rodovias Bandeirantes e Anhanguera.",
     pontos: [
       { categoria: "Centro", nome: "Centro de Itatiba", tempo: "10 km" },
       { categoria: "Cidade", nome: "Jundiaí", tempo: "24 km" },
