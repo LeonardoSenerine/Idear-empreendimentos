@@ -93,7 +93,7 @@ export const casaAtual: CasaAtual = {
   resumo: { area: 240, suites: 3, vagas: 4 },
   apresentacao: [
     "Uma casa pensada para receber, com vista privilegiada para a mata e a montanha: a cozinha se abre para o jantar e o espaço gourmet completo olha para a piscina com prainha.",
-    "Hall de entrada e sala com pé-direito alto, home office, três suítes (a master com closet e sacada), lavabo, área de serviço e despensa. Mais um espaço de 40 m² para estúdio de música, ferramentas, equipamentos, um quarto a mais ou o ambiente que a família precisar.",
+    "Hall de entrada e sala com pé-direito alto, escritório com banheiro ao lado do hall, três suítes (a master com closet e sacada), lavabo, área de serviço e despensa. Mais um espaço de 40 m² para estúdio de música, ferramentas, equipamentos, um quarto a mais ou o ambiente que a família precisar.",
   ],
   ficha: [
     { rotulo: "Área construída", valor: 240, unidade: "m²" },
@@ -197,7 +197,7 @@ export const casaAtual: CasaAtual = {
     {
       titulo: "Piscina com prainha",
       numero: "5 × 2,5 m",
-      texto: "Prainha rasa para as crianças, ao lado do espaço gourmet e com vista para a mata.",
+      texto: "Prainha rasa para as crianças, ao lado do espaço gourmet.",
       imagem: `${BASE}/piscina.webp`,
       alt: "Piscina com deck de madeira e jardim",
     },
@@ -209,7 +209,7 @@ export const casaAtual: CasaAtual = {
     "Piscina com prainha",
     "Três suítes",
     "Closet na suíte master",
-    "Home office",
+    "Escritório com banheiro",
     "Espaço livre de 40 m²",
     "Ar-condicionado em todos os ambientes",
     "Quatro vagas",
@@ -226,7 +226,7 @@ export const casaAtual: CasaAtual = {
         { nome: "Garagem (2 vagas cobertas)", area: 25.65 },
         { nome: "Hall de entrada com pé-direito alto", area: 16.65 },
         { nome: "Escritório", area: 5.49 },
-        { nome: "Banheiro", area: 3.24 },
+        { nome: "Banheiro do escritório", area: 3.24 },
       ],
     },
     {
@@ -267,7 +267,7 @@ export const casaAtual: CasaAtual = {
       imagem: { src: `${BASE}/acab-pergolado.webp`, alt: "Detalhe do pergolado em placas metálicas e forro ripado", ilustrativa: true, largura: 920, altura: 430 },
     },
     {
-      item: "Marcenaria (sugestão)",
+      item: "Marcenaria",
       material: "Painel de madeira com perfis de LED embutidos",
       imagem: { src: `${BASE}/acab-painel.webp`, alt: "Detalhe do painel de madeira da sala de jantar com faixas de luz", ilustrativa: true, largura: 420, altura: 800 },
     },
@@ -288,11 +288,12 @@ export const casaAtual: CasaAtual = {
     },
   ],
   localizacao: {
-    // Fonte: site do condomínio (ecologieitatiba.com.br), consultado em 23/11/2026
+    // Fonte: site do condomínio (ecologieitatiba.com.br), consultado em 23/11/2026.
+    // Distância até o centro corrigida pelo cliente em 24/11/2026: 10 km, cerca de 15 minutos.
     descricao:
-      "Loteamento fechado com portaria 24 horas, câmeras de segurança e internet por fibra ótica, cercado de mata. A 5 minutos do centro de Itatiba, com acesso pela Rodovia dos Bandeirantes (saída do km 59).",
+      "Loteamento fechado com portaria 24 horas, câmeras de segurança e internet por fibra ótica, cercado de mata. A 10 km do centro de Itatiba, cerca de 15 minutos de carro, com acesso pela Rodovia dos Bandeirantes (saída do km 59).",
     pontos: [
-      { categoria: "Centro", nome: "Centro de Itatiba", tempo: "5 min" },
+      { categoria: "Centro", nome: "Centro de Itatiba", tempo: "10 km" },
       { categoria: "Cidade", nome: "Jundiaí", tempo: "24 km" },
       { categoria: "Cidade", nome: "Campinas", tempo: "38 km" },
       { categoria: "Cidade", nome: "São Paulo", tempo: "80 km" },

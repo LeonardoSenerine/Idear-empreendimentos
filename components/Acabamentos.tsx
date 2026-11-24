@@ -13,9 +13,10 @@ export default function Acabamentos() {
     <section id="acabamentos" aria-labelledby="acabamentos-titulo" className="section">
       <div className="container-idear">
         <h2 id="acabamentos-titulo" data-split className="h2 max-w-[18ch]">
-          Materiais escolhidos para durar.
+          Sugestões de acabamento.
         </h2>
         <p className="mt-6 max-w-[60ch] text-[16px] leading-relaxed text-stone">
+          Os materiais abaixo são sugestões do projeto para inspirar cada ambiente e podem ser alterados.{" "}
           {casa.entrega.inclui} {casa.entrega.naoInclui}
         </p>
 

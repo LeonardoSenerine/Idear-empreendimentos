@@ -115,6 +115,11 @@ export const empresa = {
         "Não. A casa é entregue com revestimentos nos banheiros, louças e metais. Os móveis, a marcenaria, os eletrodomésticos e a decoração que aparecem nas imagens são sugestões de ambientação, para mostrar o que dá para fazer em cada espaço.",
     },
     {
+      pergunta: "Posso mudar os acabamentos?",
+      resposta:
+        "Sim. Os acabamentos mostrados no site e nas imagens são sugestões do projeto e podem ser alterados. Fale com a gente para conversar sobre as opções.",
+    },
+    {
       pergunta: "Quando a casa fica pronta?",
       resposta: "A previsão de entrega é março de 2027.",
     },
