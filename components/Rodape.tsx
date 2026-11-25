@@ -61,7 +61,7 @@ export default function Rodape() {
       </div>
 
       <div className="border-t border-ivory/15">
-        <div className="container-idear flex flex-col gap-4 pb-28 pt-8 text-[13px] leading-relaxed text-ivory/70 md:flex-row md:justify-between md:gap-10">
+        <div className="container-idear flex flex-col gap-4 pb-6 pt-8 text-[13px] leading-relaxed text-ivory/70 md:flex-row md:justify-between md:gap-10">
           <p className="max-w-[70ch]">
             Imagens meramente ilustrativas. Medidas, acabamentos e valores podem sofrer alterações sem aviso prévio.
             {site.registroIncorporacao ? ` ${site.registroIncorporacao}.` : null}
@@ -81,6 +81,12 @@ export default function Rodape() {
               </>
             ) : null}
           </p>
+        </div>
+        <div className="container-idear pb-24 text-[13px] text-ivory/60 md:text-right">
+          Desenvolvido por{" "}
+          <a href="https://www.senerinedev.com.br/pt" target="_blank" rel="noopener" className="link-line">
+            senerine.dev
+          </a>
         </div>
       </div>
     </footer>
