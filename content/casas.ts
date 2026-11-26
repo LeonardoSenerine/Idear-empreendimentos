@@ -103,7 +103,7 @@ export const casaAtual: CasaAtual = {
     { rotulo: "Pavimentos", valor: 2 },
     { rotulo: "Previsão de entrega", valor: "Março de 2027" },
   ],
-  preco: "R$ 2.000.000",
+  preco: "Valor sob consulta",
   // Confirmado pelo Daniel em 23/11/2026
   entrega: {
     inclui: "A casa é entregue com revestimentos nos banheiros, louças e metais.",
